@@ -1,0 +1,214 @@
+.TabbedPanels {
+	width: 300px;
+	/*background: white;*/
+	color: white;	
+}
+.TabbedPanelforrecentmatch {
+	width: 240px;
+	/*background: white;*/
+	color: white;	
+}
+.TabbedPanelsforstatus {
+	width: 650px;
+	height: 700px;
+	/*background: white;*/
+	color: white;	
+}
+.TabbedMonthPanels {
+	width: 570px;
+	background: white;
+	color: black;
+}
+
+.TabbedPanelsTab {
+	font-family: sans-serif;
+	font-size: 1em;
+	font-weight: bold;	
+}
+
+.button1 {
+	font-family: Arial;
+	font-size: 12px;
+	background-color: #e6f1fc;
+	border: 1px solid #FDCFA2;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: black;
+	text-decoration: none;
+}
+
+.anchor{
+	
+}
+
+.serieslinks{
+	color:  #DD2D00;
+}
+
+.legend {
+	width:394px;
+	height:30px;
+	color:#fff;
+	font-family:Arial;
+	font-size:20px;
+	padding-left:0.5em;
+	background: transparent url("legend_bg.gif") no-repeat;
+	/*position:bottom;*/
+	top:-1em;
+	font-weight:bold;
+	letter-spacing:0px;
+	white-space:pre; /* hack: make sure */
+	
+}
+
+div {
+	clear: both;
+}
+hr {
+}
+
+.commityRow
+{
+	background-color: #e6f1fc;
+	text-align: left;
+	font-size: 11px;
+	font-weight:bold;
+	padding-left: 10px;
+	/*color: gray;*/
+}
+.commityRowAlt
+{
+	background-color: #f0f7fd;
+	text-align: left;
+	font-size: 11px;
+	font-weight: bold;
+	padding-left: 10px;
+	
+}
+#MenuBar3 li a {
+	background-color: transparent;
+	font-size:1em;
+	font-weight: bold;
+	
+	
+}
+/*#MenuBar3 a:hover, #MenuBar3 a:focus {
+	background-image: url(../images/itemgradient-hover.gif);
+	background-repeat: repeat-x;
+}
+#MenuBar3 a.MenuBarItemHover, #MenuBar3 a.MenuBarItemSubmenuHover, #MenuBar3 a.MenuBarSubmenuVisible {
+	background-image: url(../images/itemgradient-hover.gif);
+	background-repeat: repeat-x;
+}
+#MenuBar3 li {
+	background-image: url(../images/itemgradient.gif);
+	background-repeat: repeat-x;
+}*/
+
+.scrollBarsHV{
+	scrollbar-base-color: #e6f1fc;scrollbar-track-color: #e6f1fc;scrollbar-face-color: #e6f1fc;
+		    scrollbar-highlight-color: #e6f1fc;scrollbar-3dlight-color: gray;scrollbar-darkshadow-color: #e6f1fc;
+		    scrollbar-shadow-color: gray;scrollbar-arrow-color: black;
+	/*scrollbar-base-color: #fffff3;
+    scrollbar-track-color: #fffff3;
+    scrollbar-face-color: #fffff3;
+    scrollbar-highlight-color: #fffff3;
+    scrollbar-3dlight-color: #ff9f6b;
+    scrollbar-darkshadow-color: #fffff3;
+    scrollbar-shadow-color: #FFCA95;
+    scrollbar-arrow-color: #ff9f6b;*/
+}
+
+.FlatButton
+{
+    BORDER-RIGHT: gray 1px solid;
+    BORDER-TOP: gray 1px solid;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 11px;
+    BORDER-LEFT: maroon thin solid;
+    WIDTH: 70px;
+    COLOR: black;
+    BORDER-BOTTOM: indianred thin solid;
+    FONT-FAMILY: Tahoma;
+    HEIGHT: 20px;
+    BACKGROUND-COLOR: #f0f7fd;
+    TEXT-ALIGN: center
+}
+.PopButton
+{
+    BORDER-RIGHT: gray 1px solid;
+    BORDER-TOP: gray 1px solid;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 11px;
+    BORDER-LEFT: indianred thin solid;
+    WIDTH: 25px;
+    COLOR: black;
+    BORDER-BOTTOM: indianred thin solid;
+    FONT-FAMILY: Tahoma;
+    HEIGHT: 20px;
+    BACKGROUND-COLOR: white;
+    TEXT-ALIGN: center
+}
+
+.smsbutton {
+	font-family: Arial;
+	font-size: 12px;
+	background-color: #1768BA;
+	border: 1px solid #FFFFFF;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #FFFFFF;
+	text-decoration: none;
+	/*height:19*/
+	width:32
+    
+} 
+
+.divlist{
+	
+		background-color: #000;
+  background-image: -moz-linear-gradient(top, #ffffff, #e0e0e0);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e0e0e0));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e0e0e0);
+  background-image: -o-linear-gradient(top, #ffffff, #e0e0e0);
+  background-image: linear-gradient(to bottom, #ffffff, #e0e0e0);
+  background-repeat: repeat-x;
+  border-color: #252525;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe0e0e0', GradientType=0);
+	   display:none;
+	   position:absolute;
+	   z-index:100;
+	   position: absolute;
+       border: solid #cccccc 1px;
+       padding-bottom: 1px;
+       opacity: 10;
+       filter: alpha(opacity=100);
+       font-family: Arial, sans-serif;
+       width:auto;
+       height:auto;
+       padding:30px;
+}
+
+.backgrounddiv{
+	position:absolute;
+	width:115%;
+	height:120%;
+	display: none;
+	top:0px;
+	left:0px;
+	z-index:10;
+	/*filter: alpha(opacity=40);*/
+/* 	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=10);*/
+  	-moz-opacity: 0.50;
+    opacity:0.5;
+   /* background-color: transparent;*/
+	background: transparent;
+}
+
+
