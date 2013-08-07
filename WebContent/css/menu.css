@@ -1,0 +1,377 @@
+  <style type="text/css">
+  <!--
+    /* Global styles */
+
+    a{
+      text-decoration: none;
+    }
+   
+    /* Properties that sets the background of entire menu */
+    #menubar{
+      background-color: #D8D8D8;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+   
+    /* Properties of the menus on the menubar */
+    #wide{
+      background-color: #D8D8D8;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    #noball{
+      background-color: #D8D8D8;
+      position: absolute;
+      right:50;
+      top: 0;
+    }
+    
+    #wideplus{/*to change extras button position*/
+    /*  background-color: #D8D8D8;*/
+      position: absolute;
+      right:690;
+      top: 3;
+    }
+   /* #noballplus{
+      background-color: #D8D8D8;
+      position: absolute;
+      right:680;
+      top: 3;
+    }*/
+    #noballplusruns{
+      background-color: #D8D8D8;
+      position: absolute;
+      right:640;
+      top: 3;
+    }
+	#byesplus{
+	  background-color: #c0c0c0;
+      position: absolute;
+      right:595;
+      top: 3;
+	}
+	#legbyesplus{
+		 background-color: #c0c0c0;
+      position: absolute;
+      right:550;
+      top: 3;
+		}
+    #penalty{/*to change penalty button position*/
+      background-color: #c0c0c0;
+      position: absolute;
+      right:510;
+      top: 3;
+    }
+   #Dismissal{
+   	background-color: #c0c0c0;
+      position: absolute;
+      right:460;
+      top: 3;
+   	}
+   	#retires{
+   			background-color: #c0c0c0;
+      position: absolute;
+      right:410;
+      top: 3;
+   		}
+   	#forceendover{
+   			background-color: #c0c0c0;
+      position: absolute;
+      right:360;
+      top: 3;
+   		}
+   	#pauseinnings{
+   			background-color: #c0c0c0;
+      position: absolute;
+      right:310;
+      top: 3;
+   			}
+   	#endinnings{
+   			background-color: #c0c0c0;
+      position: absolute;
+      right:260;
+      top: 3;
+   				}
+    #switchbatsman{
+    		background-color: #c0c0c0;
+      position: absolute;
+      right:210;
+      top: 3;
+   	}
+	#changebowler{
+	  background-color: #c0c0c0;
+      position: absolute;
+      right:160;
+      top: 3;
+	}
+	#newball{
+			background-color: #c0c0c0;
+      position: absolute;
+      right:110;
+      top: 3;
+		}
+	#powerplay{
+		background-color: #c0c0c0;
+    	 position: absolute;
+      right:60;
+      top: 3;
+		}
+	#undo{/*for undo button */
+	  background-color: #c0c0c0;
+      position: absolute;
+      right:10;
+      top: 3;
+	 }	
+    #go{
+      background-color: #c0c0c0;
+      left: 10;
+      position: absolute;
+      top: 0;
+    }
+
+    /* Properties of the actual menus that are hidden until clicked */
+    #gomenu{
+      background-color: #c0c0c0;
+      left: 10;
+      position: absolute;
+      top: 20;
+      visibility: hidden;
+      width: 80;
+    }
+
+    #wideplusmenu{
+      background-color:  #c0c0c0;
+      right: 610;
+      position: absolute;
+      top: 50;
+      visibility: hidden;
+      width: 130;
+    }
+    #wideplussubmenu{
+   	  background-color:  #c0c0c0;
+      right: 575;
+      position: absolute;
+
+      top: 50;
+      visibility: hidden;
+      width: 30;
+   	}
+   #noballmenu{
+   	  background-color:  #c0c0c0;
+      right: 800;
+      position: absolute;
+
+      top: 10;
+      visibility: hidden;
+      width: 80;
+   		
+   	}
+   	
+ /*	#extrasmenu{ //to set extra menus position
+   	  background-color:  #c0c0c0;
+      right: 450;
+      position: absolute;
+
+      top: 65;
+      visibility: hidden;
+      width: 150;
+   		
+   	}  */
+   
+   	
+	#byessubmenu{
+	  background-color:  #c0c0c0;
+      right: 450;
+      position: absolute;
+      top: 50;
+      visibility: hidden;
+      width: 30;
+		}
+	
+   /*	#noballplusmenu{
+   		 background-color:  #c0c0c0;
+      right: 600;
+      position: absolute;
+
+      top: 50;
+      visibility: hidden;
+      width: 150;
+   		} */
+   	#noballplusrunsmenu{
+   		 background-color:  #c0c0c0;
+      right: 480;
+      position: absolute;
+
+      top: 50;
+      visibility: hidden;
+      width: 200;
+   		}
+   	#noballsubmenu{
+   	 background-color:  #c0c0c0;
+      right: 450;
+      position: absolute;
+
+      top: 50;
+      visibility: hidden;
+      width: 30;
+   		}
+   	#byesplusmenu{
+   	background-color:  #c0c0c0;
+      right: 480;
+      position: absolute;
+
+      top: 50;
+      visibility: hidden;
+      width: 130;
+   	}
+   	#legbyesplusmenu{
+   	  background-color:  #c0c0c0;
+      right: 450;
+      position: absolute;
+
+      top: 50;
+      visibility: hidden;
+      width: 130;
+   		}
+  	#legbyessubmenu{
+		 background-color:  #c0c0c0;
+      right: 420;
+      position: absolute;
+
+      top: 50;
+      visibility: hidden;
+      width: 30;
+			}
+   	#penaltymenu{/*to set penalty menus position*/
+   	  background-color:  #c0c0c0;
+      right: 350;
+      position: absolute;
+      font:balck;
+
+      top: 50;
+      visibility: hidden;
+      width: 200;
+   		
+   	}
+   	#Dismissalmenu{
+   		background-color:  #c0c0c0;
+      right: 300;
+      position: absolute;
+
+      top: 50;
+      visibility: hidden;
+      width: 200;
+   		}
+   /*	#widebyemenu{/*to set widebyemenu menus position
+   	  background-color:  #c0c0c0;
+      right: 430;
+      position: absolute;
+
+      top: 70;
+      visibility: hidden;
+      width: 20;
+
+   	} */
+    /* Properties of About Dialog box */
+    #about{
+      background-color: gray;
+      border: 2px solid black;
+      height: 50;
+      left: 100;
+      position: absolute;
+      top: 50;
+      visibility: hidden;
+      vertical-align: left;
+      width: 200;
+    }
+   
+  /*  #Interval{
+    	background-color: #c0c0c0;
+     	position: absolute;
+      	right:800;
+      	top: 30;
+    }
+    #Intervalmenu{
+   	  background-color:  #c0c0c0;
+      right:795;
+      position: absolute;
+
+      top: 60;
+      visibility: hidden;
+      width:100;
+   		
+   	}  */
+    #ByesRuns{
+    	background-color: #c0c0c0;
+     	position: absolute;
+      	right:700;
+      	top: 30;
+    }
+    #ByesRunsmenu{
+   	  background-color:  #c0c0c0;
+      right:480;
+      position: absolute;
+
+      top: 60;
+      visibility: hidden;
+      width:50;
+   		
+   	}
+    #LegByesRuns{
+    	background-color: #c0c0c0;
+     	position: absolute;
+      	right:600;
+      	top: 30;
+    }    
+   
+   
+    
+   	#LegByesRunsmenu{
+   	  background-color:  #c0c0c0;
+      right:600;
+      position: absolute;
+
+      top: 60;
+      visibility: hidden;
+      width:50;
+   		
+   	}
+    
+   	#LegByeOverThrows{
+   	  background-color: #c0c0c0;
+     	position: absolute;
+      	right:350;
+      	top:30;
+   			
+   	}
+   	#LegByeOverThrowsmenu{
+   		background-color:  #c0c0c0;
+      	right:220;
+      	position: absolute;
+	     top: 70;
+    	 visibility: hidden;
+      	width:150;
+   		
+   		}
+   	#byelegbyemenu{
+   		background-color:  #c0c0c0;
+      	right:190;
+      	position: absolute;
+	     top: 70;
+    	 visibility: hidden;
+      	width:50;
+   		
+	}
+	.acceptRecord{
+		background:    #CC6699 ;
+		FONT-WEIGHT: bold;
+	}
+	.rejectRecord{
+		background: #CCFF99;
+		FONT-WEIGHT: bold;
+	}
+  -->
+  </style>

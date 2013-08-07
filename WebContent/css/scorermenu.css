@@ -1,0 +1,666 @@
+         /* End Css For Byes Menu and Start Byes Sub Menu */
+
+     #byesplussubmenu{
+     	position: absolute;
+        width:50px;
+        right:50%;
+        top:5%;
+        border: solid #7E7E7E 1px;
+        border-width: 1px 0 0 1px;
+        border: solid #7E7E7E 1px;
+        background-color: #d4ebd8;
+        padding-bottom: 1px;
+        opacity: .9;
+        filter: alpha(opacity=90);
+        font-family: Arial, sans-serif;
+		text-align:center;
+	}
+     #byesplussubmenu ul{
+	    text-decoration: none;
+	    list-style-type: none;
+	    text-align:center;
+      }
+
+    #byesplussubmenu ul li{
+        display: block;
+        font-family: Arial;
+        font-size:10px;
+        text-align:center;
+        list-style-type:none;
+        height:100%;
+		text-align:center;
+    }
+
+     #byesplussubmenu  a{
+        color: mediumblue;
+        height:100%;
+        text-align:center;
+        font-size:16px;
+    }
+    #byesplussubmenu  a:hover{
+        text-decoration: blink;
+       text-align:center;
+       font-family:fantasy;
+        color: tomato;
+        font-size:20px;
+        height:100%;
+	
+    }
+
+   /*End Byes Menu With Sub Menu*/
+    /* start leg byes menu*/
+
+   
+   /*End leg Bye Menu And Start Leg Bye Sub Menu*/
+       #legbyessubmenu{
+          position: absolute;
+          width:50px;
+          right:45%;
+          top: 5%;
+          border-width: 1px 0 0 1px;
+          border: solid #7E7E7E 1px;
+          background-color: #d4ebd8;
+          padding-bottom: 1px;
+          opacity: .9;
+          filter: alpha(opacity=90);
+          font-family: Arial, sans-serif;
+		  text-align:center;	
+      }
+       #legbyessubmenu ul{
+          text-decoration: none;
+          list-style-type: none;
+        }
+
+      #legbyessubmenu ul li{
+          display: block;
+          font-family: Arial;
+          font-size:10px;
+          list-style-type:none;
+          height:100%;
+
+      }
+      #legbyessubmenu  a{
+          color: mediumblue;
+          text-align:center;
+          height:100%;
+          font-size:16px;
+      }
+      #legbyessubmenu a:hover{
+          text-decoration: blink;
+          text-align:center;
+          font-family:fantasy;
+          color: tomato;
+          font-size:20px;
+          height:100%;
+
+      }
+   /*End leg bye Menu with sub Menu*/
+ /*start penalty menu*/
+        #penaltymenu{
+          position: absolute;
+          width:200px;
+          border: solid #7E7E7E;
+          border-width: 1px 0 0 1px;
+          border: solid #7E7E7E 1px;
+          background-color: #d4ebd8;
+          padding-bottom: 1px;
+          opacity: .9;
+          filter: alpha(opacity=90);
+          font-family: Arial, sans-serif;
+
+
+         }
+      #penaltymenu ul{
+          text-decoration: none;
+          list-style-type: none;
+      }
+
+      #penaltymenu ul li{
+          display: block;
+          text-align:left;
+          font-family: Arial;
+          font-size:10px;
+          height:100%;
+
+      }
+      #penaltymenu ul li a{
+          color: mediumblue;
+          text-align:left;
+          height:100%;
+      }
+      #penaltymenu ul li a:hover{
+          text-decoration: blink;
+          text-align:left;
+          color: tomato;
+          height:100%;
+          font-size:14px;
+      }
+    /*end penalty menu*/
+    /* Start Dismissal Menu*/
+       #Dismissalmenu{
+          position: absolute;
+          width:250px;
+          border-width: 1px 0 0 1px;
+          border: solid #7E7E7E 1px;
+          background-color: #d4ebd8;
+          padding-bottom: 1px;
+          opacity: .9;
+          filter: alpha(opacity=90);
+          font-family: Arial, sans-serif;
+
+
+         }
+      #Dismissalmenu ul{
+          text-decoration: none;
+          list-style-type: none;
+      }
+
+      #Dismissalmenu ul li{
+          display: block;
+          text-align:left;
+          font-family: Arial;
+          font-size:10px;
+          height:100%;
+
+      }
+      #Dismissalmenu ul li a{
+          color: mediumblue;
+          text-align:left;
+          height:100%;
+      }
+      #Dismissalmenu ul li a:hover{
+          text-decoration: blink;
+          text-align:left;
+          color: tomato;
+          font-size:14px;
+          height:100%;
+
+      }
+
+	/* Start IntervalmenuMeu*/
+		#Intervalmenu{
+          position: absolute;
+          width:150px;
+          border-width: 1px 0 0 1px;
+          border: solid #7E7E7E 1px;
+          background-color: #d4ebd8;
+          padding-bottom: 1px;
+          opacity: .9;
+          filter: alpha(opacity=90);
+          font-family: Arial, sans-serif;
+
+
+         }
+      #Intervalmenu ul{
+          text-decoration: none;
+          list-style-type: none;
+      }
+
+      #Intervalmenu ul li{
+          display: block;
+          text-align:left;
+          font-family: Arial;
+          font-size:10px;
+          height:100%;
+
+      }
+      #Intervalmenu ul li a{
+          color: mediumblue;
+          text-align:left;
+          height:100%;
+      }
+      #Intervalmenu ul li a:hover{
+          text-decoration: blink;
+          text-align:left;
+          color: tomato;
+          font-size:14px;
+          height:100%;
+
+      }
+		
+	/*End Intervalmenu Menu*/
+    /*Start Wide menu*/
+     
+   /*End wide menu start wide sub menu*/
+
+       #wideplussubmenu{
+          position: absolute;
+          width:50px;
+          right:68%;
+          border-width: 1px 0 0 1px;
+          border: solid #7E7E7E 1px;
+          background-color: #d4ebd8;
+          padding-bottom: 1px;
+          opacity: .9;
+          filter: alpha(opacity=90);
+          font-family: Arial, sans-serif;
+          text-align:center;
+      }
+       #wideplussubmenu ul{
+          text-decoration: none;
+          list-style-type: none;
+          text-align:center;
+        }
+
+      #wideplussubmenu ul li{
+          display: block;
+          font-family: Arial;
+          font-size:10px;
+          list-style-type:none;
+          height:100%;
+		  text-align:center;	
+      }
+      #wideplussubmenu  a{
+          color: mediumblue;
+          text-align:center;
+          height:100%;
+            font-size:16px;
+      }
+      #wideplussubmenu  a:hover{
+          text-decoration: none;
+          text-align:center;
+          font-family:fantasy;
+          color: tomato;
+          font-size:18px;
+          height:100%;
+
+      }
+      /*End wide menu with sub menu*/
+    /*Start No ball plus Run Menu*/
+     /*Start No Ball Bat  menu*/
+      #noballbatplusmenu{
+          position: absolute;
+          width:140px;
+          right:48%;
+          top: 5%;     
+          border-width: 1px 0 0 1px;
+          border: solid #7E7E7E 1px;
+          background-color: #d4ebd8;
+          padding-bottom: 1px;
+          opacity: .9;
+          filter: alpha(opacity=90);
+          font-family: Arial, sans-serif;
+		  text-align:center;
+
+         }
+      #noballbatplusmenu ul{
+          text-decoration: none;
+          list-style-type: none;
+      }
+
+      #noballbatplusmenu ul li{
+          display: block;
+          text-align:left;
+          font-family: Arial;
+          font-size:10px;
+          height:100%;
+
+      }
+      #noballbatplusmenu  a{
+          color: mediumblue;
+           text-align:center;
+          height:100%;
+           
+      }
+      #noballbatplusmenu  a:hover{
+          text-decoration: blink;
+           text-align:center;
+          color: tomato;
+          font-size:14px;
+          height:100%;
+
+      }
+   /*End No Ball Run Menu And Start No Ball Run Sub Menu*/
+       #noballbatplussubmenu{
+          position: absolute;
+          width:50px;
+          right:44%;
+          top: 5%;  
+          border-width: 1px 0 0 1px;
+          border: solid #7E7E7E 1px;
+          background-color: #d4ebd8;
+          padding-bottom: 1px;
+          opacity: .9;
+          filter: alpha(opacity=90);
+          font-family: Arial, sans-serif;
+		  text-align:center;
+      }
+       #noballbatplussubmenu ul{
+          text-decoration: none;
+          list-style-type: none;
+        }
+
+      #noballbatplussubmenu ul li{
+          display: block;
+          font-family: Arial;
+          font-size:10px;
+          list-style-type:none;
+          height:100%;
+
+      }
+      #noballbatplussubmenu  a{
+          color: mediumblue;
+          text-align:center;
+          height:100%;
+      }
+      #noballbatplussubmenu a:hover{
+          text-decoration: none;
+          text-align:center;
+          font-family:fantasy;
+          color: tomato;
+          font-size:20px;
+          height:100%;
+
+      }
+   /**End No Ball Run Menu With Sub Menu/
+	 /*no ball bar run sub menu boundry*/
+      
+		 #noballbatplussubmenuboudry{
+          position: absolute;
+          width:50px;
+          right:44%;
+          top: 5%;  
+          border-width: 1px 0 0 1px;
+          border: solid #7E7E7E 1px;
+          background-color: #d4ebd8;
+          padding-bottom: 1px;
+          opacity: .9;
+          filter: alpha(opacity=90);
+          font-family: Arial, sans-serif;
+		  text-align:center;
+      }
+       #noballbatplussubmenuboudry ul{
+          text-decoration: none;
+          list-style-type: none;
+        }
+
+      #noballbatplussubmenuboudry ul li{
+          display: block;
+          font-family: Arial;
+          font-size:10px;
+          list-style-type:none;
+          height:100%;
+
+      }
+      #noballbatplussubmenuboudry  a{
+          color: mediumblue;
+          text-align:center;
+          height:100%;
+      }
+      #noballbatplussubmenuboudry a:hover{
+          text-decoration: none;
+          text-align:center;
+          font-family:fantasy;
+          color: tomato;
+          font-size:20px;
+          height:100%;
+
+      }
+		
+		
+    /* start No ball + byes/legbyes*/
+
+     #morenoballbatplusmenu{
+          position: absolute;
+          width:140px;
+          left: 32%;
+          top: 5%; 
+          border-width: 1px 0 0 1px;
+          border: solid #7E7E7E 1px;
+          background-color: #d4ebd8;
+          padding-bottom: 1px;
+          opacity: .9;
+          filter: alpha(opacity=90);
+          font-family: Arial, sans-serif;
+		  text-align:center;
+
+         }
+      #morenoballbatplusmenu ul{
+          text-decoration: none;
+          list-style-type: none;
+      }
+
+      #morenoballbatplusmenu ul li{
+          display: block;
+          text-align:left;
+          font-family: Arial;
+          font-size:10px;
+          height:100%;
+
+      }
+      #morenoballbatplusmenu a{
+          color: mediumblue;
+          text-align:left;
+          height:100%;
+      }
+      #morenoballbatplusmenu a:hover{
+          text-decoration: blink;
+          text-align:left;
+          color: tomato;
+          font-size:14px;
+          height:100%;
+
+      }
+   /* end No ball + byes/legbyes and start sub Menu*/
+
+       #morenoballbatplussubmenu{
+          position: absolute;
+          width:50px;
+          right:52%;
+          top:5%;
+          border-width: 1px 0 0 1px;
+          border: solid #7E7E7E 1px;
+          background-color: #d4ebd8;
+          padding-bottom: 1px;
+          opacity: .9;
+          filter: alpha(opacity=90);
+          font-family: Arial, sans-serif;
+		   text-align:center;	
+      }
+       #morenoballbatplussubmenu ul{
+          text-decoration: none;
+          list-style-type: none;
+        }
+
+      #morenoballbatplussubmenu ul li{
+          display: block;
+          font-family: Arial;
+          font-size:10px;
+          list-style-type:none;
+          height:100%;
+
+      }
+      #morenoballbatplussubmenu a{
+          color: mediumblue;
+          text-align:center;
+          height:100%;
+      }
+      #morenoballbatplussubmenu a:hover{
+          text-decoration: none;
+           text-align:center;
+          font-family:fantasy;
+          color: tomato;
+          font-size:14px;
+          height:100%;
+
+      }
+     
+      	
+      /*More runs menu*/
+          #morerunsmenu{
+          position: absolute;
+          width:50px;
+          right:78%;
+          border-width: 1px 0 0 1px;
+          border: solid #7E7E7E 1px;
+          background-color: #d4ebd8;
+          padding-bottom: 1px;
+          opacity: .9;
+          filter: alpha(opacity=90);
+          font-family: Arial, sans-serif;
+          text-align:center;
+      }
+       #morerunsmenu ul{
+          text-decoration: none;
+          list-style-type: none;
+          text-align:center;
+        }
+
+      #morerunsmenu ul li{
+          display: block;
+          font-family: Arial;
+          font-size:10px;
+          list-style-type:none;
+          height:100%;
+		  text-align:center;	
+      }
+      #morerunsmenu  a{
+          color: mediumblue;
+          text-align:center;
+          height:100%;
+            font-size:16px;
+      }
+      #morerunsmenu  a:hover{
+          text-decoration: none;
+          text-align:center;
+          font-family:fantasy;
+          color: tomato;
+          font-size:18px;
+          height:100%;
+
+      }
+
+ /* Start Css For extra Menu */
+    #extramenu{
+        position: absolute;
+        top: 5%;
+        right:0%;
+        width:120px;
+        text-align:"center";
+        border: solid #7E7E7E;
+        border-width: 1px 0 0 1px;
+        border: solid #7E7E7E 1px;
+        background-color: #d4ebd8;
+        padding-bottom: 1px;
+        opacity: .9;
+        filter: alpha(opacity=90);
+        font-family: Arial, sans-serif;
+
+
+   	}
+    #extramenu ul{
+	    text-decoration: none;
+	    list-style-type: none;
+    }
+
+    #extramenu ul li{
+        display: block;
+        text-align:center;
+        font-family: Arial;
+
+        height:100%;
+
+    }
+    #extramenu a{
+        color: mediumblue;
+        text-align:center;
+        height:100%;
+         font-size:12px;
+    }
+    #extramenu  a:hover{
+        text-decoration: blink;
+        text-align:center;
+        color: tomato;
+        height:100%;
+
+    }
+      /* End Css For extra Menu and Start extra Sub Menu */
+
+     #extrasubmenu{
+        position: absolute;
+        width:30px;
+        top: 5%;
+        right:9%;
+        border: solid #7E7E7E;
+        border-width: 1px 0 0 1px;
+        border: solid #7E7E7E 1px;
+        background-color: #d4ebd8;
+        padding-bottom: 1px;
+        opacity: .9;
+        filter: alpha(opacity=90);
+        font-family: Arial, sans-serif;
+
+	}
+     #extrasubmenu ul{
+	    text-decoration: none;
+	    list-style-type: none;
+      }
+
+    #extrasubmenu ul li{
+        display: block;
+        font-family: Arial;
+        font-size:10px;
+        text-align:center;
+        list-style-type:none;
+        height:100%;
+
+    }
+    #extrasubmenu a{
+        color: mediumblue;
+        height:100%;
+    }
+    #extrasubmenu  a:hover{
+        text-decoration: blink;
+        text-align:center;
+        color: tomato;
+        font-size:20px;
+        height:100%;
+
+    }
+
+       /*More than six  runs menu*/
+        
+        
+         
+       #moresixrunsmenu{
+          position: absolute;
+          width:50px;
+          right:73%;
+          border-width: 1px 0 0 1px;
+          border: solid #7E7E7E 1px;
+          background-color: #d4ebd8;
+          padding-bottom: 1px;
+          opacity: .9;
+          filter: alpha(opacity=90);
+          font-family: Arial, sans-serif;
+          text-align:center;
+      }
+       #moresixrunsmenu ul{
+          text-decoration: none;
+          list-style-type: none;
+          text-align:center;
+        }
+
+      #moresixrunsmenu ul li{
+          display: block;
+          font-family: Arial;
+          font-size:10px;
+          list-style-type:none;
+          height:100%;
+		  text-align:center;	
+      }
+      #moresixrunsmenu  a{
+          color: mediumblue;
+          text-align:center;
+          height:100%;
+            font-size:16px;
+      }
+      #moresixrunsmenu  a:hover{
+          text-decoration: none;
+          text-align:center;
+          font-family:fantasy;
+          color: tomato;
+          font-size:18px;
+          height:100%;
+
+      }

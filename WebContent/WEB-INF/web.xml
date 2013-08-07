@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<servlet>
+		<description>This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+		<servlet-name>AuthZInit</servlet-name>
+		<servlet-class>in.co.paramatrix.common.authz.AuthZInit</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+  
+    <servlet>
+		<description> This is the description of my J2EE component</description>
+		<display-name>This is the display name of my J2EE component</display-name>
+	    <servlet-name>SmsServlet</servlet-name>
+		<servlet-class>in.co.paramatrix.csms.sms.SmsServlet</servlet-class>
+	    <load-on-startup>1</load-on-startup>
+    </servlet>
+  
+	<servlet-mapping>
+		<servlet-name>AuthZInit</servlet-name>
+		<url-pattern>/servlet/AuthZInit</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>DefaultServletOverride</servlet-name>
+		<servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+		<init-param>
+			<param-name>listings</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DefaultServletOverride</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>	
+    
+    <servlet-mapping>
+	    <servlet-name>SmsServlet</servlet-name>
+	    <url-pattern>/servlet/SmsServlet</url-pattern>
+  	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>/newlogin.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>media</servlet-name>
+		<servlet-class>in.co.paramatrix.csms.common.media</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>media</servlet-name>
+		<url-pattern>/media</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description>
+		</description>
+		<display-name> MatchAPI</display-name>
+		<servlet-name>MatchAPI</servlet-name>
+		<servlet-class> in.co.paramatrix.csms.common.MatchAPI</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		AjaxSendEmail</display-name>
+		<servlet-name>AjaxSendEmail</servlet-name>
+		<servlet-class>
+		in.co.paramatrix.csms.common.AjaxSendEmail</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		LiveMatches</display-name>
+		<servlet-name>LiveMatches</servlet-name>
+		<servlet-class>
+		in.co.paramatrix.csms.common.LiveMatches</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		AjaxSendOfficialEmail</display-name>
+		<servlet-name>AjaxSendOfficialEmail</servlet-name>
+		<servlet-class>
+		in.co.paramatrix.csms.common.AjaxSendOfficialEmail</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>
+		OfficialStatus</display-name>
+		<servlet-name>OfficialStatus</servlet-name>
+		<servlet-class>
+		in.co.paramatrix.csms.common.OfficialStatus</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MatchAPI</servlet-name>
+		<url-pattern>/MatchAPI</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxSendEmail</servlet-name>
+		<url-pattern>/AjaxSendEmail</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LiveMatches</servlet-name>
+		<url-pattern>/LiveMatches</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjaxSendOfficialEmail</servlet-name>
+		<url-pattern>/AjaxSendOfficialEmail</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OfficialStatus</servlet-name>
+		<url-pattern>/OfficialStatus</url-pattern>
+	</servlet-mapping>
+	<servlet>
+
+    <servlet-name>UploadMatchSchedules</servlet-name>
+    	<servlet-class>in.co.paramatrix.csms.common.UploadMatchSchedules</servlet-class>
+	</servlet>
+	<servlet-mapping>   
+	    <servlet-name>UploadMatchSchedules</servlet-name>
+	    <url-pattern>/UploadMatchSchedules</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	    <servlet-name>UploadUmpirData</servlet-name>
+	    <servlet-class>in.co.paramatrix.csms.common.UploadUmpirData</servlet-class>
+ 	</servlet>
+ 	<servlet-mapping>   
+	    <servlet-name>UploadUmpirData</servlet-name>
+	    <url-pattern>/UploadUmpirData</url-pattern>
+ 	</servlet-mapping>		 
+	<servlet>
+	    <servlet-name>UploadPlayerProfiles</servlet-name>
+	    <servlet-class>in.co.paramatrix.csms.common.UploadPlayerProfiles</servlet-class>
+	</servlet>
+ 	<servlet-mapping>   
+    	<servlet-name>UploadPlayerProfiles</servlet-name>
+    	<url-pattern>/UploadPlayerProfiles</url-pattern>
+ 	</servlet-mapping>
+ 	<servlet>
+    	<servlet-name>UploadMatchRefereesData</servlet-name>
+    	<servlet-class>in.co.paramatrix.csms.common.UploadMatchRefereesData</servlet-class>
+ 	</servlet>
+ 	<servlet-mapping>   
+    	<servlet-name>UploadMatchRefereesData</servlet-name>
+    	<url-pattern>/UploadMatchRefereesData</url-pattern>
+ 	</servlet-mapping>
+
+
+ <servlet>
+    <servlet-name>UploadUmpirCoachesData</servlet-name>
+    <servlet-class>in.co.paramatrix.csms.common.UploadUmpirCoachesData</servlet-class>
+ </servlet>
+ <servlet-mapping>   
+    <servlet-name>UploadUmpirCoachesData</servlet-name>
+    <url-pattern>/UploadUmpirCoachesData</url-pattern>
+ </servlet-mapping>
+	
+</web-app>

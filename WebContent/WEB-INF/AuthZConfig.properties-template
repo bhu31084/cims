@@ -1,0 +1,69 @@
+#For SQLite-linux
+#authz.cache file = /var/cache/authz.db
+
+#for SQLite-Windows
+#authz.cache_file = jdbc:sqlite:D:/Saudagarm/authz.db
+#authz.cache_file = D:/Saudagarm/authz.db
+
+#for SQLite-Linux
+#authz.cache file = jdbc:sqlite:/var/tmp/authz.db
+
+authz.database-name=MsSQL
+#authz.database-name=Sqlite
+
+# For MS-SQL In Authz module
+authz.rdb.database-driver=com.microsoft.jdbc.sqlserver.SQLServerDriver
+authz.rdb.database-url=jdbc:microsoft:sqlserver://10.1.1.203:1433;DatabaseName=BCCI_Scorer
+authz.rdb.database-username=data
+authz.rdb.database-password=data321
+
+# For SQLite In Authz module
+#authz.rdb.database-driver=org.sqlite.JDBC
+#authz.rdb.database-url=jdbc:sqlite:C:/temp/AuthZ/authz.db
+#authz.rdb.database-url=jdbc:sqlite:/var/tmp/authz.db
+#authz.rdb.database-username= 
+#authz.rdb.database-password= 
+
+authz.rdb.attempt-for-connection = 5
+authz.rdb.max-db-conn = 5
+authz.rdb.timeout-for-connection = 30
+
+authz.max_ops = 200
+authz.op-pattern=([a-zA-Z_0-9.]+)
+authz.role-pattern=([a-zA-Z_0-9.]+)
+authz.user-pattern=([a-zA-Z_0-9.]+)
+authz.allow_absent_ops = 0
+authz.db.schema.version = 7
+
+#authz.db_name=Sqlite
+
+#authz.db.schema.tablelist = authz_users_mst, authz_ops_mst, authz_roles_mst, authz_user_op_map, authz_role_op_map, authz_db_config
+
+allowed-ops-for-new-users=login, logout
+#allowed-ops-for-new-users=
+
+#authz.roles.player.ops =
+#authz.roles.player.users =  saudagar, avadhut, archana, swapnil, vishwajeet, bhushan ,dipti, vaibhavg, nitin ,priti,
+
+#authz.roles.umpire.ops =
+#authz.roles.umpire.users = saudagar, avadhut, archana, swapnil, vishwajeet, bhushan ,dipti, vaibhavg, nitin ,priti,
+
+#authz.roles.scorer.ops = selectmatch, inningscorecard, inningsdetails, limitedovers, matchend, menuscorer, out, playerselectionteamone, playerselectionteamtwo, scorer, scorernew, scorerrefresh, selectbatsmanbowlers, setsecondinning, teamselection, testpartnership, testteamplayerscore, updateinning, updateover, updatescore,  
+#authz.roles.scorer.users = saudagar, avadhut, archana, swapnil, vishwajeet, bhushan ,dipti, vaibhavg, nitin ,priti,Pritam ,Sanket ,rameshparab,jsood ,Achopra ,cmadhusudan ,kramakrishnan ,Ashaikh ,Msamiali ,bsjaykumar ,Skamalakarrao ,koushiksaha  ,Subhashg ,Tapashroy ,Psingh ,Udaygharat,Jayantgokhale ,Jigneshbhatt ,Hemalidesai ,Nandans ,Ramjit ,Amitparkhe ,Omprakashs ,Dilipu ,Isrekhi ,Dinarg ,Sudhirv ,Slandge ,RPARAB 
+ 
+#authz.roles.referee.ops = 
+#authz.roles.referee.users = saudagar, avadhut, archana, swapnil, vishwajeet, bhushan ,dipti, vaibhavg, nitin ,priti,
+
+#authz.roles.umpirecoach.ops = 
+#authz.roles.umpirecoach.users = saudagar, avadhut, archana, swapnil, vishwajeet, bhushan ,dipti, vaibhavg, nitin ,priti,
+
+#authz.roles.admin.ops = matchsetupmaster,adminmatchsetup, appealmaster ,adminmatchsetupresponse,adminsavedataresponse
+#authz.roles.admin.users =  admin ,psant ,Pritam ,Sanket ,RPARAB,saudagar, avadhut, archana, swapnil, vishwajeet, bhushan ,dipti, vaibhavg, nitin ,priti, 
+
+#authz.roles.report.ops = selectmatch, refereereportonumpires,captaingrouppitchfacility,UmpireSelfAssesment,UmpiresSelfAssessment,UmpireReport,umpiringDecisionLog,UmpireCoachReport 
+#authz.roles.report.users = bcci, admin
+
+#These keys should absent when Authz database is sqlite
+#authz.db.tables.users_mst.mandatory_columns.password=#RANDOM#
+#authz.db.tables.users_mst.mandatory_columns.first_name= 
+

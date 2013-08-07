@@ -1,0 +1,67 @@
+# Common Rules For Fileds
+rules.id = IsInt
+rules.flag = IsChar|RegexMatch(^[A&pipe;D]$)
+rules.commonName = IsString
+
+# Rules For The User Master Form
+rules.name = IsString|RegexMatch(^[a-zA-Z][a-zA-Z\s]+$)
+rules.name = IsString
+rules.mName = RegexMatch(^[a-z\+A-Z\+])
+rules.status = IsChar|RegexMatch(^[A&pipe;I&pipe;D]$)
+rules.password = IsString
+rules.dateOfBirth = IsDate
+rules.sex = IsChar|RegexMatch(^[M&pipe;F]$)
+
+# Rules For The Series Master Form
+rules.gsseriesName = IsString
+rules.gsseriesDesc = IsString
+
+# Rules For The Club Master Form
+rules.gsclubname = IsString
+
+# Rules For The Venue Master Form
+rules.venuename = IsString|RegexMatch(^[a-zA-Z][a-zA-Z\s]+$)
+rules.venueadd = IsString
+rules.venuestreet = IsString
+rules.venueplot = IsString
+rules.venueend1 = IsString
+rules.venueend2 = IsString
+rules.venuepincode = RegexMatch(^\d{3}\s?\d{3}$)
+rules.venuedistrict = IsString
+rules.veneulocationname = IsString
+rules.venueclub = IsString
+
+# Rules For The State Master Form
+rules.gsStatename = IsString|RegexMatch(^[a-zA-Z][a-zA-Z\s]+$)
+
+# Rules For The Location Master Form
+rules.gslocname = IsString|RegexMatch(^[a-zA-Z][a-zA-Z\s]+$)
+
+# Rules For The Team Master Form
+rules.gsteamName = IsString
+rules.gsNikname = RegexMatch(^[a-z\+A-Z\+])
+rules.gsTeamLoc = IsString
+rules.gsTeamDesc = IsString
+
+# Rules For The Role Master Form
+rules.gsrlName = IsString|RegexMatch(^[a-zA-Z][a-zA-Z\s]+$)
+rules.gsDescription = IsString|RegexMatch(^[a-zA-Z][a-zA-Z\s]+$)
+
+# Rules For The Appeal Master Form
+rules.appealName = IsString|RegexMatch(^[a-zA-Z][a-zA-Z\s]+$)
+rules.appealDesc = IsString|RegexMatch(^[a-zA-Z][a-zA-Z\s]+$)
+
+# Rules For The Result Master Form
+rules.gsResultName = IsString|RegexMatch(^[a-zA-Z][a-zA-Z\s]+$)
+rules.gsResultDesc = IsString|RegexMatch(^[a-zA-Z][a-zA-Z\s]+$)
+
+# Rules For The Round Master Form
+rules.gsRoundName = IsString|RegexMatch(^[a-zA-Z][a-zA-Z\s]+$)
+rules.gsRoundDesc = IsString|RegexMatch(^[a-zA-Z][a-zA-Z\s]+$)
+
+# Rules For The Weather Master Form
+rules.gsWeatherName = IsString|RegexMatch(^[a-zA-Z][a-zA-Z\s]+$)
+rules.gsWeatherDesc = IsString|RegexMatch(^[a-zA-Z][a-zA-Z\s]+$)
+
+
+

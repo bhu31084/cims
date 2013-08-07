@@ -1,0 +1,95 @@
+.chromestyle{
+width: 100%;
+font-weight: bold;
+/*background: transparent url("../images/AdminMenuBG.jpg") ;*/
+}
+
+.chromestyletd{
+width: 99%;
+font-weight: bold;
+color: 
+}
+
+.chromestyle:after{ /*Add margin between menu and rest of content in Firefox*/
+content: "."; 
+display: block; 
+height: 0; 
+clear: both; 
+visibility: hidden;
+}
+
+.chromestyle ul{
+/*border: 1px solid #BBB;*/
+	background-color: #000;
+  background-image: -moz-linear-gradient(top, #3d3d3d, #131313);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3d3d3d), to(#131313));
+  background-image: -webkit-linear-gradient(top, #3d3d3d, #131313);
+  background-image: -o-linear-gradient(top, #3d3d3d, #131313);
+  background-image: linear-gradient(to bottom, #3d3d3d, #131313);
+  background-repeat: repeat-x;
+  border-color: #252525;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff3d3d3d', endColorstr='#ff131313', GradientType=0);
+padding: 0;
+margin: 0;
+}
+
+.chromestyle ul li{
+display: inline-block;
+line-height:18px;
+ width: 9em;
+}
+
+.chromestyle ul li a{
+color: #494949;
+padding: 1.1em 0.75em;
+margin: 0;
+text-decoration: none;
+font-size:11px;
+color:#fff;
+font-weight:normal;
+display:block;
+}
+
+.chromestyle ul li a:hover{
+	background-color: #A6d4f5;
+	color:#000;
+	}
+
+/*.chromestyleborder{
+	border-right: 2px solid #FFFFFF; /*THEME CHANGE HERE*/
+}*/
+.chromestyle ul li a:hover, .chromestyle ul li a.selected{ /*script dynamically adds a class of "selected" to the current active menu item*/
+
+}
+
+
+/* ######### Style for Drop Down Menu ######### */
+
+.dropmenudiv{
+position:absolute;
+top: 0;
+border:0;
+font:normal 12px Verdana;
+line-height:18px;
+z-index:100;
+background-color: #000;
+width: 200px;
+visibility: hidden;
+filter: progid:DXImageTransform.Microsoft.Shadow(color=#CACACA,direction=135,strength=4); /*Add Shadow in IE. Remove if desired*/
+}
+
+
+.dropmenudiv a{
+width: 100%;
+display: block;
+text-indent: 3px;
+border:0;
+padding:0.75em;
+text-decoration: none;
+color: #fff;
+}
+
+.dropmenudiv a:hover{ /*THEME CHANGE HERE*/
+background-color: #A6d4f5;
+color:#000;
+}

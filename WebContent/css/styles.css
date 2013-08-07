@@ -1,0 +1,651 @@
+
+
+Select
+{
+	BORDER-RIGHT: gray thin solid;
+	BORDER-TOP: gray thin solid;
+	FONT-WEIGHT: lighter  ;
+	border-width: 1px;
+	BORDER-LEFT: indianred thin solid;
+	COLOR: black;
+	BORDER-BOTTOM: indianred thin solid;
+	FONT-FAMILY: Tahoma;
+	font-size :11 ;
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN: left;
+	HEIGHT: 20px;
+}
+
+H1, H2, H3, H4, H5, TH, THEAD, TFOOT
+{
+    COLOR: #003366;
+}
+.H1	{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:	2em;
+	font-weight:	400;
+	font-style:	normal;
+	text-decoration:	none;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+     COLOR: #003366;
+    }
+
+H2	{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:	1.75em;
+	font-weight:	700;
+	font-style:	normal;
+	text-decoration:	none;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+	}
+
+H3	{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:	1.58em;
+	font-weight:	500;
+	font-style:	normal;
+	text-decoration:	none;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+	}
+
+H4	{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:	1.33em;
+	font-weight:	500;
+	text-decoration:	none;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+	}
+
+H5, DT	{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:	1em;
+	font-weight:	700;
+	font-style:	normal;
+	text-decoration:	none;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+	}
+
+H6	{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:	.8em;
+	font-weight:	700;
+	font-style:	normal;
+	text-decoration:	none;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+	}
+
+TFOOT, THEAD	{
+	font-size:	1em;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+	font-family: Arial, Helvetica, sans-serif;
+	}
+
+TH	{
+	vertical-align:	baseline;
+	font-size:	1em;
+	font-weight:normal;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+	font-family: Arial, Helvetica, sans-serif;
+	}
+
+
+A:link	{
+	text-decoration:	none;
+	color:	#3333cc;
+	}
+
+A:visited	{
+	text-decoration:	none;
+	color:	#333399;
+	}
+
+A:active	{
+	text-decoration:	none;
+	color:	#333399;
+	}
+
+A:hover	{
+	text-decoration:	underline;
+	color:	#3333cc;
+	}
+
+SMALL	{
+	font-size:	.7em;
+	}
+
+BIG	{
+	font-size:	1.17em;
+	}
+
+BLOCKQUOTE, PRE	{
+	font-family:	Courier New, monospace;
+	}
+
+
+UL LI	{
+	list-style-type:	square ;
+	}
+
+UL LI LI	{
+	list-style-type:	disc;
+	}
+
+UL LI LI LI	{
+	list-style-type:	circle;
+	}
+
+OL LI	{
+	list-style-type:	decimal;
+	}
+
+OL OL LI	{
+	list-style-type:	lower-alpha;
+	}
+
+OL OL OL LI	{
+	list-style-type:	lower-roman;
+	}
+
+/*IMG 	{
+	margin-top: 5px;
+	margin-left: 10px;
+	margin-right: 10px;
+	}
+*/
+.body
+{
+font:14 pt ; color:black;
+ font-style:oblique;
+ font-family:sans-serif;
+ filter:progid:DXImageTransform.Microsoft.Gradient
+(GradientType=1, StartColorStr='#EDEDED', EndColorStr='#EEECFD')
+}
+
+.MainBody
+{
+	/*font:14 pt arial;
+	 color:white;
+	FONT-SIZE: .8em;
+ filter:progid:DXImageTransform.Microsoft.Gradient
+(GradientType=1, StartColorStr='#ffffff', EndColorStr='#fffff3')
+ */
+    background:#fffff3;
+
+    FONT-SIZE: .8em;
+	margin-bottom : 0;
+	z-index : -101;
+/*	margin-top : 0;*/
+	margin-right : 0;
+}
+
+.MainBodyTrans
+{
+    background:#f5f5f5;
+	FONT-SIZE: .8em;
+	margin-bottom : 0;
+	z-index : -101;
+}
+
+.amtInWord
+{
+   BORDER-RIGHT: #fffff3 1px solid;
+   BORDER-TOP: #fffff3 1px solid;
+   BORDER-LEFT: #fffff3 1px solid;
+   WIDTH: 664px; COLOR: darkred;
+   BORDER-BOTTOM: #fffff3 1px solid;
+   FONT-STYLE: normal;
+   FONT-WEIGHT: bold;
+   HEIGHT: 22px;
+   BACKGROUND-COLOR: #fffff3;
+}
+.LabelHeader
+{
+	FONT-WEIGHT:  bold  ;
+ 	COLOR: black ;
+	FONT-FAMILY: Tahoma;
+	font-size :12 ;
+	BACKGROUND-COLOR: #CCCCCC;
+	TEXT-ALIGN: left;
+}
+label
+{
+	font-weight: bold;
+	font-size: 11px;
+	color: indianred;
+	font-family: Tahoma;
+	background-color: white;
+	text-align: center;
+}
+.FlatTextBox
+{
+	BORDER-RIGHT: gray thin solid;
+	BORDER-TOP: gray thin solid;
+	FONT-WEIGHT: lighter  ;
+	border-width: 1px;
+	BORDER-LEFT: indianred thin solid;
+	COLOR: black;
+	BORDER-BOTTOM: indianred thin solid;
+	FONT-FAMILY: Tahoma;
+	font-size :11 ;
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN: left;
+	WIDTH: 80px; HEIGHT: 20px;
+
+}
+.FlatTextArea
+{
+    BORDER-RIGHT: gray thin solid;
+	BORDER-TOP: gray thin solid;
+	FONT-WEIGHT: lighter  ;
+    BORDER-LEFT: indianred thin solid;
+	COLOR: black;
+	BORDER-BOTTOM: indianred thin solid;
+	FONT-FAMILY: Tahoma;
+	font-size :11 ;
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN: left;
+
+}
+.FlatTextBoxTime
+{
+	BORDER-RIGHT: gray thin solid;
+	BORDER-TOP: gray thin solid;
+	FONT-WEIGHT: lighter  ;
+	border-width: 0px;
+	BORDER-LEFT: indianred thin solid;
+	COLOR: gray;
+	BORDER-BOTTOM: indianred thin solid;
+	FONT-FAMILY: Tahoma;
+	font-size :11 ;
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN: left;
+	WIDTH: 200px;
+	HEIGHT: 15px;
+}
+
+
+.FlatTextBoxMoney
+{
+	BORDER-RIGHT: gray thin solid;
+	BORDER-TOP: gray thin solid;
+	FONT-WEIGHT: lighter  ;
+	border-width: 1px;
+	/* BORDER-LEFT: indianred thin solid; */
+	BORDER-LEFT: indianred thin solid;
+	COLOR: black;
+	BORDER-BOTTOM: indianred thin solid;
+	FONT-FAMILY: Arial;
+	font-size :11 ;
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN: right;
+	WIDTH: 80px; HEIGHT: 20px;
+}
+
+.SelTextBox
+{
+	BORDER-RIGHT: gray thin solid;
+	BORDER-TOP: gray thin solid;
+	FONT-WEIGHT: lighter  ;
+	border-width: 1px;
+	BORDER-LEFT: indianred thin solid;
+	COLOR: black;
+	BORDER-BOTTOM: indianred thin solid;
+	FONT-FAMILY: Tahoma;
+	font-size :11 ;
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN: left;
+	HEIGHT: 20px;
+}
+.FlatButton
+{
+/*
+ background-color:LightSteelBlue;
+ border-style:solid;
+ border-width: 1px;
+ border-color: LightSkyBlue;
+*/
+
+	BORDER-RIGHT: gray thin solid;
+	BORDER-TOP: gray thin solid;
+	FONT-WEIGHT: bold;
+	border-width: 1px;
+	BORDER-LEFT: indianred thin solid;
+	COLOR: black;
+	BORDER-BOTTOM: indianred thin solid;
+	FONT-FAMILY: Tahoma;
+	font-size :11 ;
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN: center;
+	WIDTH: 60px;
+	HEIGHT: 20px;
+}
+
+
+.BigButton
+{
+/*
+ background-color:LightSteelBlue;
+ border-style:solid;
+ border-width: 1px;
+ border-color: LightSkyBlue;
+*/
+
+	BORDER-RIGHT: gray thin solid;
+	BORDER-TOP: gray thin solid;
+	FONT-WEIGHT: bold;
+	border-width: 1px;
+	BORDER-LEFT: indianred thin solid;
+	COLOR: black;
+	BORDER-BOTTOM: indianred thin solid;
+	FONT-FAMILY: Tahoma;
+	font-size :11 ;
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN: center;
+	WIDTH: 100px;
+	HEIGHT: 20px;
+}
+.PopButton
+{
+/*
+ background-color:LightSteelBlue;
+ border-style:solid;
+ border-width: 1px;
+ border-color: LightSkyBlue;
+*/
+
+	BORDER-RIGHT: gray thin solid;
+	BORDER-TOP: gray thin solid;
+	FONT-WEIGHT: bold;
+	border-width: 1px;
+	BORDER-LEFT: indianred thin solid;
+	COLOR: black;
+	BORDER-BOTTOM: indianred thin solid;
+	FONT-FAMILY: Tahoma;
+	font-size :11 ;
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN: center;
+	WIDTH: 20px;
+	HEIGHT: 20px;
+}
+
+
+.TableHeader
+{
+	FONT-WEIGHT:  bold  ;
+	border-width: 1px;
+	COLOR: indianred ;
+	FONT-FAMILY: Tahoma;
+	font-size :11 ;
+	BACKGROUND-COLOR: #CCCCCC;
+	TEXT-ALIGN: center;
+	border-style: groove  ;
+	border-color : Black;
+}
+.TableHeader1
+{
+	FONT-WEIGHT:  bold  ;
+	border-width: 1px;
+	COLOR: black ;
+	FONT-FAMILY: Tahoma;
+	font-size :11 ;
+	BACKGROUND-COLOR: #fffff;
+	TEXT-ALIGN: left;
+	border-style: groove  ;
+	border-color : Black;
+}
+.TRException
+{
+    COLOR: black ;
+    FONT-FAMILY: Tahoma;
+    font-size :12 ;
+    BACKGROUND-COLOR: #FFFFCC;
+
+
+}
+
+.TDHeader
+{
+	FONT-WEIGHT:  bold  ;
+ /* border-width: 1px; */
+	COLOR: black ;
+	FONT-FAMILY: Tahoma;
+	font-size :12 ;
+	BACKGROUND-COLOR: #CCCCCC;
+	TEXT-ALIGN: center;
+/*	border-style: groove  ;
+	border-color : Black;
+*/
+}
+.TDData
+{
+	FONT-WEIGHT:  normal  ;
+/*	border-width: 1px; */
+	COLOR: black ;
+	FONT-FAMILY: Tahoma;
+	font-size :12px ;
+     border-collapse: collapse;
+
+    table-layout:auto;
+;
+/*	border-style: groove  ;
+	border-color : Black;
+*/
+}
+
+.TableData
+{
+	FONT-WEIGHT:  normal   ;
+	border-width: 2px;
+	COLOR: black ;
+    FONT-FAMILY: Tahoma;
+	font-size :12px ;
+	TEXT-ALIGN: left;
+	vertical-align :middle ;
+    border-collapse: collapse;
+    border-left:3px;
+    border-right:3px;
+
+}
+
+.SectionHide
+{
+	display:none ;
+	VISIBILITY: hidden ;
+	position:relative ;
+}
+
+.SectionUnHide
+{
+	display :block ;
+	VISIBILITY: visible  ;
+	position:relative ;
+	z-index : -101;
+}
+
+.SectionHeader
+{
+	font-weight: bold;
+	font-size: 11px;
+	color: indianred;
+	font-family: Tahoma;
+	background-color: white;
+	text-align: left;
+}
+.linksmall
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 11px;
+    COLOR: #666666;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    TEXT-DECORATION: none
+}
+.linksmall:hover
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 11px;
+    COLOR: #666666;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    TEXT-DECORATION: underline
+}
+.footerTr{
+	background-color: #999999
+}
+.textwhite
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 12px;
+    COLOR: #ffffff;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    TEXT-DECORATION: none
+}
+.textwhitesmall
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 11px;
+    COLOR: #ffffff;
+   font-family:fantasy;
+    TEXT-DECORATION: none
+}
+.a5
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 11px;
+    COLOR: #003366;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    TEXT-DECORATION: none
+}
+.a5:hover
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 11px;
+    COLOR: #ff0000;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    TEXT-DECORATION: underline
+}
+/*
+	Newly Applied Css [START]
+*/
+.labelHead
+{
+	margin-left:41.5%;
+	margin-bottom:3px;
+	height:13px;
+	font-weight: bold;
+	font-size: 11px;
+	color: indianred;
+	font-family: Tahoma;
+	background-color: white;
+	text-align: center;
+}
+
+
+.FlatTextBox150
+{
+	BORDER-RIGHT: gray thin solid;
+	BORDER-TOP: gray thin solid;
+	FONT-WEIGHT: lighter  ;
+	border-width: 1px;
+	BORDER-LEFT: indianred thin solid;
+	COLOR: black;
+	BORDER-BOTTOM: indianred thin solid;
+	FONT-FAMILY: Tahoma;
+	font-size :11 ;
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN: left;
+	WIDTH: 150px;
+	HEIGHT: 20px;
+}
+
+.FlatTextBox100
+{
+	BORDER-RIGHT: gray thin solid;
+	BORDER-TOP: gray thin solid;
+	FONT-WEIGHT: lighter  ;
+	border-width: 1px;
+	BORDER-LEFT: indianred thin solid;
+	COLOR: black;
+	BORDER-BOTTOM: indianred thin solid;
+	FONT-FAMILY: Tahoma;
+	font-size :11 ;
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN: left;
+	WIDTH: 100px;
+	HEIGHT: 20px;
+}
+
+
+.BigButtonNoWid
+{
+/*
+ background-color:LightSteelBlue;
+ border-style:solid;
+ border-width: 1px;
+ border-color: LightSkyBlue;
+*/
+
+	BORDER-RIGHT: gray thin solid;
+	BORDER-TOP: gray thin solid;
+	FONT-WEIGHT: bold;
+	border-width: 1px;
+	BORDER-LEFT: indianred thin solid;
+	COLOR: black;
+	BORDER-BOTTOM: indianred thin solid;
+	FONT-FAMILY: Tahoma;
+	font-size :11 ;
+	BACKGROUND-COLOR: white;
+	TEXT-ALIGN: center;
+	HEIGHT: 20px;
+
+}
+.coll
+{
+
+border-style:solid;
+border-color:silver;
+
+}
+.combox{
+     width:50%;
+    list-style:georgian;
+	font-size: 9pt;
+}
+.footer{
+color:#fff;	
+background-color: #000;
+  background-image: -moz-linear-gradient(top, #3d3d3d, #131313);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3d3d3d), to(#131313));
+  background-image: -webkit-linear-gradient(top, #3d3d3d, #131313);
+  background-image: -o-linear-gradient(top, #3d3d3d, #131313);
+  background-image: linear-gradient(to bottom, #3d3d3d, #131313);
+  background-repeat: repeat-x;
+  border-color: #252525;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff3d3d3d', endColorstr='#ff131313', GradientType=0);
+padding:10px 0;	
+	
+	
+	}
+
+
+/*	padding:0 0 0 1%;
+*/
+}
+/*
+	Newly Applied Css [END]
+*/
+
