@@ -1,0 +1,750 @@
+<!--Page Name: MatchSetUpMaster.jsp
+Created By 	 : Archana Dongre.
+Created Date : 28th Aug 2008.
+Description  : Match Set Up page to set the schedule of match or create a new match.
+Company 	 : Paramatrix Tech Pvt Ltd.
+-->
+<%@ page import="sun.jdbc.rowset.CachedRowSet"%>
+<%@ page import="in.co.paramatrix.csms.generalamd.GenerateStoreProcedure"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import="in.co.paramatrix.csms.common.Common"%>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.text.NumberFormat"%>
+<%@ include file="../AuthZ.jsp" %>
+<%
+	response.setHeader("Pragma","private");
+	response.setHeader("Pragma", "No-cache");
+    response.setHeader("Cache-Control", "private");
+	response.setHeader("Cache-Control", "no-cache");
+	response.setHeader("Cache-Control", "no-store");
+	response.setHeader("Pragma", "must-revalidate");
+	response.setHeader("Cache-Control", "must-revalidate");
+	response.setDateHeader("Expires", 0);
+%>
+<%
+	try{  
+		String editMatchId = request.getParameter("editmatchId");
+		Common commonUtil= new Common();
+        CachedRowSet  crsObjUmpire1 = null;
+		CachedRowSet  crsObjUmpire2 = null;
+		CachedRowSet  crsObjUmpire3 = null;
+		CachedRowSet  crsObjUmpireCoach = null;
+		CachedRowSet  crsObjMatchReferee = null;
+		CachedRowSet  crsObjScorer1 = null;
+		CachedRowSet  crsObjScorer2 = null;
+		CachedRowSet  crsObjTeam1 = null;
+		CachedRowSet  crsObjTeam2 = null;
+		CachedRowSet  crsObjTournamentNm = null;
+		CachedRowSet  crsObjvenueNm = null;
+		CachedRowSet  crsObjMatchType = null;
+		CachedRowSet  crsObjMatchCategory = null;
+		CachedRowSet  crsObjMatchId = null;
+		CachedRowSet  crsObjDisplayMatchData = null;
+		CachedRowSet  crsObjSeason = null;
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Vector vparam =  new Vector();
+		String 	gettingMatchId		=	"";
+		String 	GSFromDate			=	sdf.format(new Date());
+		String 	GSToDate			=	sdf.format(new Date());
+		String 	gsActDate			=	"";
+		String 	gsFromDate="";
+		String 	gsToDate="";
+		String fromDate =new String();
+		String toDate =new String();
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DATE,0);
+		gsActDate =	new SimpleDateFormat("dd/MM/yyyy").format(cal.getTime());
+		cal.add(Calendar.DATE,8);
+		GenerateStoreProcedure  lobjGenerateProc = new GenerateStoreProcedure();
+
+		String lseries =null;
+		String lvenue =	null;
+		String lcategory =	null;
+		String lseason = null;
+		String ltype =	null;
+		String lmname =	"";
+		String lteam1 =	null;
+		String lteam2 =	null;
+		String lump1 =	null;
+		String lump2 =	null;
+		String lumpcoach =	null;
+		String lreferee =	null;
+		String lscorer =null;
+		String lscorer2 = null;
+		String lid = null;
+		String lFromDate ="";
+		String lToDate = "";
+		String mflag = null;
+
+		vparam.add("2");//
+        crsObjTeam1 = lobjGenerateProc.GenerateStoreProcedure(
+        	"esp_dsp_team_ms",vparam,"ScoreDB");
+		crsObjTeam2 = lobjGenerateProc.GenerateStoreProcedure(
+			"esp_dsp_team_ms",vparam,"ScoreDB");
+
+		crsObjTournamentNm = lobjGenerateProc.GenerateStoreProcedure(
+			"esp_dsp_series_ms",vparam,"ScoreDB");
+
+		crsObjvenueNm = lobjGenerateProc.GenerateStoreProcedure(
+			"esp_dsp_venue_ms",vparam,"ScoreDB");
+
+		crsObjMatchType = lobjGenerateProc.GenerateStoreProcedure(
+			"esp_dsp_matchtype_ms",vparam,"ScoreDB");
+
+		crsObjMatchCategory = lobjGenerateProc.GenerateStoreProcedure(
+			"esp_dsp_matchcategory_ms",vparam,"ScoreDB");
+			
+		crsObjSeason = lobjGenerateProc.GenerateStoreProcedure(
+			"esp_dsp_season",vparam,"ScoreDB");
+		vparam.removeAllElements();		
+		
+		vparam.add("3");//Role of Scorer		
+		crsObjScorer1 = lobjGenerateProc.GenerateStoreProcedure(
+			"dsp_Scorerlist",vparam,"ScoreDB");//Display
+		crsObjScorer2 = lobjGenerateProc.GenerateStoreProcedure(
+			"dsp_Scorerlist",vparam,"ScoreDB");//Display
+		vparam.removeAllElements();
+				
+		String gsMatchName =	request.getParameter("txtmchName");
+
+		/*Edit match if exist*/
+		if(editMatchId != null){
+			vparam.add(editMatchId);
+			crsObjDisplayMatchData = lobjGenerateProc.GenerateStoreProcedure(
+				"esp_dsp_modifymatch",vparam,"ScoreDB");//Display
+				vparam.removeAllElements();
+			while(crsObjDisplayMatchData.next()){
+				lid =crsObjDisplayMatchData.getString("match_id");
+				lseries =crsObjDisplayMatchData.getString("series_name");
+				lvenue =	crsObjDisplayMatchData.getString("venue_name");
+				lcategory =	crsObjDisplayMatchData.getString("category_name");
+				lseason = crsObjDisplayMatchData.getString("season_name");
+				ltype =	crsObjDisplayMatchData.getString("matchtype_name");
+				lmname =	crsObjDisplayMatchData.getString("matchname");
+				lFromDate =	crsObjDisplayMatchData.getString("from_date").substring(0,12);
+				fromDate = sdf.format(new Date(lFromDate));				
+				lToDate =	crsObjDisplayMatchData.getString("to_date").substring(0,12);
+				toDate = sdf.format(new Date(lToDate));	
+				lteam1 =	crsObjDisplayMatchData.getString("team_one");
+				lteam2 =	crsObjDisplayMatchData.getString("team_two");
+				lump1 =	crsObjDisplayMatchData.getString("umpire1");
+				lump2 =	crsObjDisplayMatchData.getString("umpire2");
+				lumpcoach =	crsObjDisplayMatchData.getString("umpirecoach");
+				lreferee =	crsObjDisplayMatchData.getString("matchreferee");
+				lscorer =	crsObjDisplayMatchData.getString("scorer");	
+				lscorer2 =	crsObjDisplayMatchData.getString("scorer2");
+			}
+		}
+
+		/*Create new match.*/
+		if(request.getParameter("hdSubmit")!=null && request.getParameter("hdSubmit").equals("submit")){
+		/*For insertion of record in database.*/
+		String gsGettingMatchId = null;
+		if(request.getParameter("txtmchid") != null){
+			gsGettingMatchId = request.getParameter("txtmchid");
+				mflag ="3";
+		}else{
+			gsGettingMatchId = "0";
+			mflag ="2";
+		}
+		String gsTournamentId =	request.getParameter("tournamentid");
+		String gsvenueId =	request.getParameter("venueId");
+		String gsSeasonId =	request.getParameter("seasonId");
+		String gsMatchTypeId =	request.getParameter("MtchTypeId");
+		String gsMtchCategory =	request.getParameter("MtchCategoryId");
+		String gsteam1Id =	request.getParameter("team1Id");
+		String gsteam2Id =	request.getParameter("team2Id");
+		String gsUmpire1 =	request.getParameter("UmpirId1")==null?"":request.getParameter("UmpirId1");
+		String gsUmpire2 =	request.getParameter("UmpirId2")==null?"":request.getParameter("UmpirId2");
+		String gsUmpire3 =	request.getParameter("UmpirId3")==null?"":request.getParameter("UmpirId3");
+		String gsUmpireCoach =	request.getParameter("UmpirIdCoach")==null?"":request.getParameter("UmpirIdCoach");
+		String gsReferee =	request.getParameter("Referee")==null?"":request.getParameter("Referee");		
+		String gsScorer1 =	request.getParameter("Scorer1");
+		String gsScorer2 =	request.getParameter("Scorer2");
+		
+		gsFromDate =commonUtil.formatDate(request.getParameter("hdfromdate"));
+		gsToDate =commonUtil.formatDate(request.getParameter("hdtodate"));
+		
+		vparam.add(mflag);
+		vparam.add(gsGettingMatchId);
+		vparam.add(gsMatchTypeId);
+		vparam.add(gsMatchName);
+		vparam.add(gsTournamentId); 
+		vparam.add(gsFromDate); 
+        vparam.add(gsToDate);     			       
+        vparam.add(gsMtchCategory); 
+        vparam.add(gsSeasonId); 
+        vparam.add(gsteam1Id); 
+       	vparam.add(gsteam2Id);           
+        vparam.add(gsvenueId);
+       	vparam.add(gsUmpire1); 
+       	vparam.add(gsUmpire2); 
+       	vparam.add(gsUmpire3);  
+		vparam.add(gsUmpireCoach); 
+       	vparam.add(gsReferee); 
+     	vparam.add(gsScorer1); 
+       	vparam.add(gsScorer2);                 	
+		try{
+		crsObjMatchId = lobjGenerateProc.GenerateStoreProcedure(
+			"esp_amd_prematch_details_modified",vparam,"ScoreDB");
+		}catch(Exception e){
+			e.printStackTrace();
+		}	
+			
+		vparam.removeAllElements();//End of Insertion
+		if(crsObjMatchId != null){
+			while(crsObjMatchId.next()){				
+				gettingMatchId = crsObjMatchId.getString("RetVal");
+			}				
+		}
+	}
+%>
+<html>
+<head>
+	<title> Match Set Up</title>    
+	<script language="JavaScript" src="../../js/Calender.js" type="text/javascript"></script>
+	<link href="../../css/adminForm.css" rel="stylesheet" type="text/css" />
+	<script language="javascript">
+		
+		function fromToDateValidate(fromDate , toDate)
+		{		
+		fromDay   = fromDate.substring(0, fromDate.indexOf("/"));
+		fromMonth = fromDate.substring (fromDate.indexOf ("/")+1, fromDate.lastIndexOf ("/"));
+		fromYear  = fromDate.substring (fromDate.lastIndexOf("/")+1, fromDate.length); 
+	
+		objFromDate = new Date()
+	
+		objFromDate.setDate(fromDay);
+	    objFromDate.setMonth(fromMonth - 1);
+	    objFromDate.setYear(fromYear);
+		
+		toDay   = toDate.substring(0, toDate.indexOf("/"));
+		toMonth = toDate.substring (toDate.indexOf ("/")+1, toDate.lastIndexOf ("/"));
+		toYear  = toDate.substring (toDate.lastIndexOf ("/")+1, toDate.length); 
+	
+		objToDate = new Date()
+		   
+	    objToDate.setDate(toDay);
+	    objToDate.setMonth(toMonth - 1);
+	    objToDate.setYear(toYear);
+		
+		fromDateTime  = objFromDate.getTime();
+		toDateTime    = objToDate.getTime();
+		
+		// calculating difference in time //
+		diffTime =(toDateTime - fromDateTime);
+		
+		if(diffTime < 0) {			
+			return false	
+		}
+		else {
+			return true
+		}
+	
+	}  // end of  fromToDateValidate	
+	/// method to validate with  current date , entered date should not be less than current date
+	
+	function currentDateValidate(enteredDate)
+	{
+	//alert("currentDateValidate   "+enteredDate);
+		enteredDay   = enteredDate.substring(0, enteredDate.indexOf("/"));
+		enteredMonth = enteredDate.substring (enteredDate.indexOf ("/")+1, enteredDate.lastIndexOf ("/"));
+		enteredYear  = enteredDate.substring (enteredDate.lastIndexOf("/")+1, enteredDate.length); 
+	
+		objEnteredDate = new Date()
+		
+		objEnteredDate.setDate(enteredDay);
+	    objEnteredDate.setMonth(enteredMonth - 1);
+	    objEnteredDate.setYear(enteredYear);
+	
+		objCurrDate = new Date()
+		
+	
+		enteredDateTime = objEnteredDate.getTime()
+		currentDateTime = objCurrDate.getTime()
+	
+		diffTime = (enteredDateTime - currentDateTime)		
+		if( diffTime < 0 ) {			
+			return false
+		}
+		else {
+			return true
+		} 	
+	}  // end of currentDateValidate
+
+	    function displayMatchId(){
+	    	if(document.getElementById("hdSubmit").value != ""){
+	    		var ans = document.getElementById("hdSubmit").value ;
+	    		if(ans == "success update"){
+	    			alert("Updated Data successfully.");
+	    			window.close();
+	    		}else if(ans == "success insert"){
+	    			alert("Scorers are Inserted Successfully.");
+	    			window.close();	
+	    		}else if(ans == "success"){
+	    			var r = confirm("Do you Want to Modify Another Match?");
+	    			if (r == true)
+            		{            
+                		document.frmMatchSetUp.action = "AdminMatchSetUp.jsp";
+			        }else{
+                		document.frmMatchSetUp.action = "../Logout.jsp";						
+                    }
+                document.frmMatchSetUp.submit();
+	    		}else{	    		
+	    			var r = confirm("Your Match Id "+ans+" Has Been Generated.Do you Want to Add Another Match?");
+            		if (r == true)
+            		{
+                		document.frmMatchSetUp.action = "MatchSetUpMaster.jsp";
+	                }else
+    	            {
+                		document.frmMatchSetUp.action = "../Logout.jsp";
+		        	}
+                    document.frmMatchSetUp.submit();
+				}
+			}
+	    }
+
+		function callNextPage(){
+			if(document.getElementById("chkprevious").checked == true){
+				var flag = true;
+				var fromdate = document.getElementById("txtFromdate").value;
+				var todate = document.getElementById("txtTodate").value;
+				if(document.getElementById('dpvenue').value == "" ){
+					alert("Please Select venue");
+					document.getElementById('dpvenue').focus();
+				}else if(document.getElementById('dptournament').value == "" ){
+					alert("Please Select Tournament");
+					document.getElementById('dptournament').focus();
+				}else if(document.getElementById('dpseason').value == ""){
+					alert("Please Select Season");
+					document.getElementById('dpseason').focus();
+				}else if(document.getElementById('dpmchCategory').value == ""){
+					alert("Please Select Match Category");
+					document.getElementById('dpmchCategory').focus();
+				}else if(document.getElementById('dpmchType').value == ""){
+					alert("Please Select Match Type");
+					document.getElementById('dpmchType').focus();
+				}else if(document.getElementById('dpteam1').value == ""){
+					alert("Please Select Teams 1");
+					document.getElementById('dpteam1').focus();
+				}else if(document.getElementById('dpteam2').value == ""){
+					alert("Please Select Teams 2");
+					document.getElementById('dpteam2').focus();
+				}else if(document.getElementById('dpteam1').value == document.getElementById('dpteam2').value){
+					alert("Please Choose Different Team.Both Can not be same");
+					return false;				
+				}else{
+					if(document.getElementById('dpScorer1').value != "" && document.getElementById('dpScorer2').value != ""){
+				 		if(document.getElementById('dpScorer1').value == document.getElementById('dpScorer2').value){
+					 		alert("Please Choose Different Scorers.Both Can not be same");
+					 		document.getElementById('dpScorer1').focus();
+					 		flag = false;
+					 		return false;
+					 	}else{
+					 		flag = true;
+					 	}
+					}
+					if(flag){
+						document.getElementById("hdfromdate").value= document.getElementById("txtFromdate").value;
+					 	document.getElementById("hdtodate").value= document.getElementById("txtTodate").value;
+						var TournamentArr = (document.getElementById('dptournament').value).split("~"); 
+						var venueArr = (document.getElementById('dpvenue').value).split("~");
+						var seasonArr = (document.getElementById('dpseason').value).split("~");
+						var team1Arr = (document.getElementById('dpteam1').value).split("~");
+						var team2Arr = (document.getElementById('dpteam2').value).split("~");
+						var MtchCategoryArr = (document.getElementById('dpmchCategory').value).split("~");
+						var MtchTypeArr = (document.getElementById('dpmchType').value).split("~");
+						var ScorerArr1 = (document.getElementById('dpScorer1').value).split("~");
+						var ScorerArr2 = (document.getElementById('dpScorer2').value).split("~");
+			
+						var MtchCategoryId = MtchCategoryArr[0]; // Set match category Id;
+						var MtchCategoryName = MtchCategoryArr[1]; // Set match category Name;
+						var MtchTypeId = MtchTypeArr[0]; // Set umpire4 Id;
+						var MtchTypeName = MtchTypeArr[1]; // Set umpire4 Name;			 	
+						var TournamentId = TournamentArr[0]; // Set tournament Id;
+						var TournamentName = TournamentArr[1]; // Set tournament Name;
+						
+						var seasonId = seasonArr[0]; // Set scorer1 Id;
+						var seasonName = seasonArr[1]; // Set scorer1 Id;
+						
+						var venueId = venueArr[0]; // Set venue Id;
+						var venueName = venueArr[1]; // Set venue Name;
+						var team1Id = team1Arr[0]; // Set team1 Id;
+						var team1Name = team1Arr[1]; // Set team1 Name;
+						var team2Id = team2Arr[0]; // Set team2 Id;
+						var team2Name = team2Arr[1]; // Set team2 Name;				
+						
+						var ScorerId1 = ScorerArr1[0]; // Set scorer1 Id;
+						var ScorerName1 = ScorerArr1[1]; // Set scorer1 Name;
+						var ScorerId2 = ScorerArr2[0]; // Set scorer2 Id;
+						var ScorerName2 = ScorerArr2[1]; // Set scorer2 Name;		 		 			 	
+						document.getElementById("hdSubmit").value = "submit"; 					
+						document.frmMatchSetUp.action ="MatchSetUpMaster.jsp?seasonId="+seasonId+"&Scorer1="+ScorerId1+"&Scorer2="+ScorerId2+"&tournamentid="+TournamentId+"&venueId="+venueId+"&team1Id="+team1Id+"&team2Id="+team2Id+"&MtchCategoryId="+MtchCategoryId+"&MtchTypeId="+MtchTypeId;
+						document.frmMatchSetUp.submit();
+					}
+				}
+			}else{
+				var flag = true;
+				var fromdate = document.getElementById("txtFromdate").value;
+				var todate = document.getElementById("txtTodate").value;
+				if(document.getElementById('dpvenue').value == "" ){
+					alert("Please Select venue");
+					document.getElementById('dpvenue').focus();
+				}else if(document.getElementById('dptournament').value == "" ){
+					alert("Please Select Tournament");
+					document.getElementById('dptournament').focus();
+				}else if(document.getElementById('dpseason').value == ""){
+					alert("Please Select Season");
+					document.getElementById('dpseason').focus();
+				}else if(document.getElementById('dpmchCategory').value == ""){
+					alert("Please Select Match Category");
+					document.getElementById('dpmchCategory').focus();
+				}else if(document.getElementById('dpmchType').value == ""){
+					alert("Please Select Match Type");
+					document.getElementById('dpmchType').focus();
+				}else if(document.getElementById('dpteam1').value == ""){
+					alert("Please Select Teams 1");
+					document.getElementById('dpteam1').focus();
+				}else if(document.getElementById('dpteam2').value == ""){
+					alert("Please Select Teams 2");
+					document.getElementById('dpteam2').focus();
+				}else if(document.getElementById('dpteam1').value == document.getElementById('dpteam2').value){
+					alert("Please Choose Different Team.Both Can not be same");
+					return false;
+				}else if(currentDateValidate(fromdate) == false){
+				 	alert("Please select From date greater than or equal to current date");
+				 	return false;
+				}else if(currentDateValidate(todate) == false){
+				 	alert("Please select To date greater than or equal to From date ");
+				 	return false;
+				}else if(fromToDateValidate(fromdate,todate) == false){
+				 	alert("Please select From date less than or equal to To date ");
+				 	return false;
+				}else{
+					if(document.getElementById('dpScorer1').value != "" && document.getElementById('dpScorer2').value != ""){
+				 		if(document.getElementById('dpScorer1').value == document.getElementById('dpScorer2').value){
+					 		alert("Please Choose Different Scorers.Both Can not be same");
+					 		document.getElementById('dpScorer1').focus();
+					 		flag = false;
+					 		return false;
+					 	}else{
+					 		flag = true;
+					 	}
+					}
+				if(flag){
+					document.getElementById("hdfromdate").value= document.getElementById("txtFromdate").value;
+				 	document.getElementById("hdtodate").value= document.getElementById("txtTodate").value;
+					var TournamentArr = (document.getElementById('dptournament').value).split("~"); 
+					var venueArr = (document.getElementById('dpvenue').value).split("~");
+					var seasonArr = (document.getElementById('dpseason').value).split("~");
+					var team1Arr = (document.getElementById('dpteam1').value).split("~");
+					var team2Arr = (document.getElementById('dpteam2').value).split("~");
+					var MtchCategoryArr = (document.getElementById('dpmchCategory').value).split("~");
+					var MtchTypeArr = (document.getElementById('dpmchType').value).split("~");
+					var ScorerArr1 = (document.getElementById('dpScorer1').value).split("~");
+					var ScorerArr2 = (document.getElementById('dpScorer2').value).split("~");
+		
+					var MtchCategoryId = MtchCategoryArr[0]; // Set match category Id;
+					var MtchCategoryName = MtchCategoryArr[1]; // Set match category Name;
+					var MtchTypeId = MtchTypeArr[0]; // Set umpire4 Id;
+					var MtchTypeName = MtchTypeArr[1]; // Set umpire4 Name;			 	
+					var TournamentId = TournamentArr[0]; // Set tournament Id;
+					var TournamentName = TournamentArr[1]; // Set tournament Name;
+					
+					var seasonId = seasonArr[0]; // Set scorer1 Id;
+					var seasonName = seasonArr[1]; // Set scorer1 Id;
+					
+					var venueId = venueArr[0]; // Set venue Id;
+					var venueName = venueArr[1]; // Set venue Name;
+					var team1Id = team1Arr[0]; // Set team1 Id;
+					var team1Name = team1Arr[1]; // Set team1 Name;
+					var team2Id = team2Arr[0]; // Set team2 Id;
+					var team2Name = team2Arr[1]; // Set team2 Name;				
+					
+					var ScorerId1 = ScorerArr1[0]; // Set scorer1 Id;
+					var ScorerName1 = ScorerArr1[1]; // Set scorer1 Name;
+					var ScorerId2 = ScorerArr2[0]; // Set scorer2 Id;
+					var ScorerName2 = ScorerArr2[1]; // Set scorer2 Name;		 		 			 	
+					document.getElementById("hdSubmit").value = "submit"; 					
+					document.frmMatchSetUp.action ="MatchSetUpMaster.jsp?seasonId="+seasonId+"&Scorer1="+ScorerId1+"&Scorer2="+ScorerId2+"&tournamentid="+TournamentId+"&venueId="+venueId+"&team1Id="+team1Id+"&team2Id="+team2Id+"&MtchCategoryId="+MtchCategoryId+"&MtchTypeId="+MtchTypeId;
+					document.frmMatchSetUp.submit();
+				}
+			}
+		}
+}
+		function cancellation(){
+			document.frmMatchSetUp.action = "MatchSetUpMaster.jsp";
+			document.frmMatchSetUp.submit();
+		}
+
+		// to change textfield color
+		function changeColour(which) {
+			if (which.value.length > 0) {   // minimum 2 characters
+				which.style.background = "#FFFFFF"; // white
+			}
+			else {
+				which.style.background = "";  // yellow
+			}
+		}
+	</script>
+</head>
+<body onload="displayMatchId()">
+<%if(editMatchId != null){%>
+<%}else{%>
+<jsp:include page="Menu.jsp"></jsp:include>
+<%}%>
+	<FORM name="frmMatchSetUp" id="frmMatchSetUp" method="post">
+	<br><br><br>
+		<table width="780" border="0" align="center" cellpadding="2" cellspacing="1" class="table">
+			<tr align="center">
+				 <td align="left" colspan="9" bgcolor="#FFFFFF" class="leg">Match Detail Form</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="hidden" id="txtcurrDate" name="txtcurrDate" value="<%=sdf.format(new Date())%>">
+					<fieldset><legend class="legend1">Add Match Details	</legend>
+					<br>
+			 		<table width="90%" border="0" align="center" cellpadding="2"
+							cellspacing="1" class="table" >
+						<tr class="contentLight">
+							<%if(editMatchId != null){%>
+							<td>&nbsp;&nbsp;Match Id :</td>
+							<td>
+								<input type="text" class="textBoxAdminMatchSetup" name="txtmchid" id="txtmchid" size="5" readonly="readonly" onfocus = "this.style.background = '#FFFFCC'"  onblur = "changeColour(this)" value="<%=lid%>">																
+							</td> 
+							<%}else{%>							
+							<%}%>
+						</tr>
+						<tr align="left" class="contentDark">
+							<td>&nbsp;&nbsp;Match Name :</td>
+							<td>
+								<input class="textBoxAdminMatchSetup" type="text" name="txtmchName" id="txtmchName" onfocus = "this.style.background = '#FFFFCC'"  onblur = "changeColour(this)" value="<%=lmname%>">
+							</td>
+							<td>&nbsp;&nbsp;Venue :</td>
+							<td>
+								<select onfocus = "this.style.background = '#FFFFCC'" class="inputFieldMatchSetup" name="dpvenue" id="dpvenue" >
+									<option>Select </option>
+<%if(crsObjvenueNm != null){
+	while(crsObjvenueNm.next()){
+%>
+		<%if(crsObjvenueNm.getString("name").equalsIgnoreCase(lvenue)){%>
+									<option value="<%=crsObjvenueNm.getString("id")+"~"+crsObjvenueNm.getString("name")%>" selected="selected"><%=crsObjvenueNm.getString("name")%></option>
+		<%}else{%>
+									<option value="<%=crsObjvenueNm.getString("id")+"~"+crsObjvenueNm.getString("name")%>" ><%=crsObjvenueNm.getString("name")%></option>
+				<%}
+					}
+						}	
+%>							    </select>
+							</td> 
+						</tr>						
+						<tr width="90%" class="contentLight">	
+							<td>&nbsp;&nbsp;Tournament Name :</td>							
+						   	<td>
+								<select onfocus = "this.style.background = '#FFFFCC'"  class="inputFieldMatchSetup" name="dptournament" id="dptournament">
+									<option>Select </option>
+<%if(crsObjTournamentNm != null){
+	while(crsObjTournamentNm.next()){					
+%>
+<%if(crsObjTournamentNm.getString("name").equalsIgnoreCase(lseries)){%>
+									<option value="<%=crsObjTournamentNm.getString("id")+"~"+crsObjTournamentNm.getString("name")%>" selected="selected"><%=crsObjTournamentNm.getString("name")%></option>
+<%}else{%>
+									<option value="<%=crsObjTournamentNm.getString("id")+"~"+crsObjTournamentNm.getString("name")%>" ><%=crsObjTournamentNm.getString("name")%></option>
+				<%}
+			}
+		}
+%>							    </select>
+							</td>
+							<td>&nbsp;&nbsp;Season :</td>
+						   	<td>
+								<select onfocus = "this.style.background = '#FFFFCC'"  class="inputFieldMatchSetup" name="dpseason" id="dpseason">
+									<option>Select </option>
+<%if(crsObjSeason != null){
+	while(crsObjSeason.next()){
+%>
+<%if(crsObjSeason.getString("name").equalsIgnoreCase(lseason)){%>
+									<option value="<%=crsObjSeason.getString("id")+"~"+crsObjSeason.getString("name")%>" selected="selected"><%=crsObjSeason.getString("name")%></option>
+<%}else{%>
+									<option value="<%=crsObjSeason.getString("id")+"~"+crsObjSeason.getString("name")%>" ><%=crsObjSeason.getString("name")%></option>
+				<%}
+							}
+						}
+%>							    </select>
+							</td>						   	
+						</tr> 
+						<tr align="left" class="contentDark">
+			   				<td>&nbsp;&nbsp;Match Category :</td>			   				
+							<td>
+								<select onfocus = "this.style.background = '#FFFFCC'"  class="inputFieldMatchSetup" name="dpmchCategory" id="dpmchCategory">
+									<option>Select </option>
+<%if(crsObjMatchCategory != null){
+	while(crsObjMatchCategory.next()){					
+%>
+<%if(crsObjMatchCategory.getString("name").equalsIgnoreCase(lcategory)){%>
+									<option value="<%=crsObjMatchCategory.getString("id")+"~"+crsObjMatchCategory.getString("name")%>" selected="selected"><%=crsObjMatchCategory.getString("name")%></option>
+<%}else{%>				
+									<option value="<%=crsObjMatchCategory.getString("id")+"~"+crsObjMatchCategory.getString("name")%>" ><%=crsObjMatchCategory.getString("name")%></option>
+				<%}
+							}
+						}							
+%>							    </select>
+							</td>
+							<td>&nbsp;&nbsp;Match Type :</td>							
+							<td>
+								<select onfocus = "this.style.background = '#FFFFCC'"  class="inputFieldMatchSetup" name="dpmchType" id="dpmchType">
+									<option>Select </option>
+<%if(crsObjMatchType != null){
+	while(crsObjMatchType.next()){					
+%>
+<%if(crsObjMatchType.getString("name").equalsIgnoreCase(ltype)){%>
+									<option value="<%=crsObjMatchType.getString("id")+"~"+crsObjMatchType.getString("name")%>" selected="selected"><%=crsObjMatchType.getString("name")%></option>
+<%}else{%>				
+									<option value="<%=crsObjMatchType.getString("id")+"~"+crsObjMatchType.getString("name")%>" ><%=crsObjMatchType.getString("name")%></option>
+				<%}
+							}
+						}							
+%>							    </select>
+							</td> 							
+						</tr> 
+						<tr width="90%" class="contentLight">
+							<td>&nbsp;&nbsp;From Date :</td>							
+						   	<%if(editMatchId != null){%>
+						   	<td>
+						   		<input type="text" class="textBoxAdminMatchSetup" name="txtFromdate" size="15" id="txtFromdate" readonly
+								value="<%=fromDate%>" >&nbsp;&nbsp;
+								<a href="javascript:showCal('FrCalendar','StartDate','txtFromdate','frmMatchSetUp')">
+								<IMG src="../../images/cal.gif" border="0" alt="" ></a>&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="hidden" id="hdfromdate" name="hdfromdate" value="" >																
+							</td>
+							<%}else {%>
+							<td>
+						   		<input type="text" class="textBoxAdminMatchSetup" name="txtFromdate" size="15" id="txtFromdate" readonly
+								value="<%=GSFromDate%>" onblur="changetodate()">&nbsp;&nbsp;
+								<a href="javascript:showCal('FrCalendar','StartDate','txtFromdate','frmMatchSetUp')">
+								<IMG src="../../images/cal.gif" border="0" alt="" ></a>&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="hidden" id="hdfromdate" name="hdfromdate" value="" >																
+							</td>							
+							<%}%> 				
+			   				<td>&nbsp;&nbsp;To Date :</td>			   				
+							<%if(editMatchId != null){%>
+							<td>
+								<input type="text" class="textBoxAdminMatchSetup" name="txtTodate" size="15" id="txtTodate" readonly
+								value="<%=toDate%>">&nbsp;&nbsp;
+								<a href="javascript:showCal('FrCalendar1','EndDate','txtTodate','frmMatchSetUp')">
+								<IMG src="../../images/cal.gif" border="0" alt=""></a>
+								<input type="hidden" id="hdtodate" name="hdtodate" value="">
+								<input type="checkbox" name="chkprevious" id="chkprevious" />Previous																		
+							</td>
+							<%}else {%>
+							<td>
+								<input type="text" class="textBoxAdminMatchSetup" name="txtTodate" size="15" id="txtTodate" readonly
+								value="<%=GSToDate%>">&nbsp;&nbsp;
+								<a href="javascript:showCal('FrCalendar1','EndDate','txtTodate','frmMatchSetUp')">
+								<IMG src="../../images/cal.gif" border="0" alt=""></a>
+								<input type="hidden" id="hdtodate" name="hdtodate" value="">
+								<input type="checkbox" name="chkprevious" id="chkprevious" />Previous	
+							</td>
+							<%}%> 	
+						</tr> 
+						<tr align="left" class="contentDark">
+							<td>&nbsp;&nbsp;Team 1 :</td>							
+			   				<td>
+								<select onfocus = "this.style.background = '#FFFFCC'"  class="inputFieldMatchSetup" name="dpteam1" id="dpteam1"  >
+									<option>Select </option>
+<%if(crsObjTeam1 != null){	
+	while(crsObjTeam1.next()){					
+%>
+<%if(crsObjTeam1.getString("team_name").equalsIgnoreCase(lteam1)){%>
+									<option value="<%=crsObjTeam1.getString("id")+"~"+crsObjTeam1.getString("team_name")%>" selected="selected"><%=crsObjTeam1.getString("team_name")%></option>
+<%}else{%>
+									<option value="<%=crsObjTeam1.getString("id")+"~"+crsObjTeam1.getString("team_name")%>" ><%=crsObjTeam1.getString("team_name")%></option>
+				<%}
+
+							}
+						}	
+%>							    </select>
+							</td> 
+						   	<td>&nbsp;&nbsp;Team 2 :</td>						   
+							<td>
+								<select onfocus = "this.style.background = '#FFFFCC'"  class="inputFieldMatchSetup" name="dpteam2" id="dpteam2" >
+									<option>Select </option>
+<%if(crsObjTeam2 != null){
+	while(crsObjTeam2.next()){					
+%>
+<%if(crsObjTeam2.getString("team_name").equalsIgnoreCase(lteam2)){%>
+									<option value="<%=crsObjTeam2.getString("id")+"~"+crsObjTeam2.getString("team_name")%>" selected="selected"><%=crsObjTeam2.getString("team_name")%></option>
+<%}else{%>
+									<option value="<%=crsObjTeam2.getString("id")+"~"+crsObjTeam2.getString("team_name")%>" ><%=crsObjTeam2.getString("team_name")%></option>
+				<%}
+
+							}
+						}	
+%>			    				</select>
+							</td> 
+						</tr>						
+						<tr width="90%" class="contentLight">
+							<td>&nbsp;&nbsp;Scorer 1  :</td>							
+						   	<td>
+								<select onfocus = "this.style.background = '#FFFFCC'"  class="inputFieldMatchSetup" name="dpScorer1" id="dpScorer1">
+									<option>Select </option>
+<%if(crsObjScorer1 != null){
+	while(crsObjScorer1.next()){					
+%>
+<%if(crsObjScorer1.getString("scorername").equalsIgnoreCase(lscorer)){%>
+									<option value="<%=crsObjScorer1.getString("scorerid")+"~"+crsObjScorer1.getString("scorername")%>" selected="selected"><%=crsObjScorer1.getString("scorername")%></option>
+<%}else{%>
+									<option value="<%=crsObjScorer1.getString("scorerid")+"~"+crsObjScorer1.getString("scorername")%>" ><%=crsObjScorer1.getString("scorername")%></option>
+				<%}
+				}
+			}	
+%>							    </select>
+							</td> 
+						   	<td>&nbsp;&nbsp;Scorer 2 :</td>						   	
+							<td>
+								<select onfocus = "this.style.background = '#FFFFCC'"  class="inputFieldMatchSetup" name="dpScorer2" id="dpScorer2">
+									<option>Select </option>
+<%if(crsObjScorer2 != null){
+	while(crsObjScorer2.next()){					
+%>
+<%if(crsObjScorer2.getString("scorername").equalsIgnoreCase(lscorer2)){%>
+									<option value="<%=crsObjScorer2.getString("scorerid")+"~"+crsObjScorer2.getString("scorername")%>" selected="selected"><%=crsObjScorer2.getString("scorername")%></option>
+<%}else{%>
+									<option value="<%=crsObjScorer2.getString("scorerid")+"~"+crsObjScorer2.getString("scorername")%>" ><%=crsObjScorer2.getString("scorername")%></option>
+				<%}
+							}
+						}	
+%>							    </select>
+							</td> 
+						</tr> 
+						<tr width="100%" align="right" class="contentDark">
+							<td colspan="4" height="24">       			
+				       			<input class="button1" type="button"  id="btnsubmit" name="btnsubmit" value=" Submit" onclick="callNextPage()">
+				       			<%if(editMatchId != null){%>
+				       			<%}else{%>
+				      			<input class="button1" type="button"  id="btnCancel" name="btnCancel" value="Cancel" onclick="cancellation()" >	      			
+				      			<%}%>
+				      			<input  type="hidden" id="hdSubmit" name="hdSubmit" value="<%=gettingMatchId%>">	      			
+				       		</td>
+				    	</tr>											
+					</table> 
+					<br>
+					</fieldset> 	
+				</td>
+			</tr>
+	    </table>
+	    
+<%
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+%>
+	</form>
+</body>
+<jsp:include page="Footer.jsp"></jsp:include>
+<script>
+	function changetodate(){
+		document.getElementById("txtTodate").value = document.getElementById("txtFromdate").value
+	}
+</script>
+</html>
+

@@ -1,0 +1,168 @@
+<HTML>
+	<HEAD>
+		<title>View Report</title>
+        <link rel="stylesheet" type="text/css" href="../CSS/Styles.css">
+        <script>
+				function valbutton(thisform) {
+					// place any other field validations that you require here
+					// validate myradiobuttons
+					myOption = -1;
+					for (i=thisform.myradiobutton.length-1; i > -1; i--) {
+						if (thisform.myradiobutton[i].checked) {
+							myOption = i; i = -1;
+						}
+					}
+					if (myOption == -1) {
+						alert("You must select a radio button");
+						return false;
+					}
+
+					if( thisform.myradiobutton[myOption].value =="1"){
+						document.getElementById("myform").action="BattingReport.html";
+                        document.getElementById("myform").submit();
+
+                    }else if( thisform.myradiobutton[myOption].value =="2"){
+						document.getElementById("myform").action="BowlingReport.html";
+                        document.getElementById("myform").submit();
+
+					}else if( thisform.myradiobutton[myOption].value =="3"){
+                        document.getElementById("myform").action="UmpireReport.html";
+                        document.getElementById("myform").submit();
+                  	}
+
+					// place any other field validations that you require here
+					thisform.submit(); // this line submits the form after validation
+				}
+                function show(val){
+                      if(val=="1"){
+                             document.getElementById("batting1").style.display='';
+                             document.getElementById("bowling1").style.display='none';
+                      }
+                      if(val=="2"){
+                         document.getElementById("batting1").style.display='none';
+                         document.getElementById("bowling1").style.display='';
+                      }  if(val=="3"){
+                           document.getElementById("batting1").style.display='none';
+                           document.getElementById("bowling1").style.display='none';
+                      }
+
+                }
+
+    </script>
+	</HEAD>
+	<BODY>
+	<form name="myform" id="myform">
+                <table border="0" id="headerTable" width="100%">
+		            <tr>
+	                    <td><center><font color="#003399" size="6">View Report</font></center></td>
+	        	    </tr>
+                 </table>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <table width="50%"  border="1" align="center" class="TDData">
+                        <tr  style="background-color:gainsboro;">
+                            <td>
+                                <center>Select  Type</center>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" ><input type="radio" value="1" name="myradiobutton" onclick="show('1');" />Batting
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center"><input type="radio" value="2" name="myradiobutton" onclick="show('2');"/>Bowling
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center"><input type="radio" value="3" name="myradiobutton" onclick="show('3');" />Umpire
+                            </td>
+                        </tr>
+				    </table>
+                    <br>
+                    <br>
+                    <div style="display:none" id="batting1" align="center" >
+							<table style="border-left-style:groove;border-right-style:groove;border-bottom-style:groove;">
+                               <tr  style="background-color:gainsboro;">
+                                      <td colspan="2" style="font-family:cursive;"><center> Batting</center>
+
+                                      </td>
+                                </tr>
+                                <tr>
+                                    <td width="25%">Club : </td>
+                                    <td> <select id="club"  class="combox" style="border-collapse :collapse;">
+									        <option selected>Select</option>
+								        	<option>Sanpada</option>
+                                            <option>Dadar</option>
+                                          </select>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td>Team : </td>
+                                    <td> <select id="Team" class="combox">
+									        <option selected>Select</option>
+								        	<option>SanpadaXI</option>
+                                            <option>DadarXI</option>
+                                          </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Select Batsman : </td>
+                                    <td> <select id="batselect" class="combox">
+									        <option selected>select</option>
+								        	<option>All Player</option>
+							              </select>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+					</div>
+					<div style="display:none" id="bowling1" align="center">
+							<table style="border-left-style:groove;border-right-style:groove;border-bottom-style:groove;">
+                                <tr  style="background-color:gainsboro;">
+                                      <td colspan="2" style="font-family:cursive;"><center> Bowling</center> </td>
+                                </tr>
+                                <tr>
+                                    <td width="25%">Club : </td>
+                                    <td> <select id="bolclub"  class="combox" style="border-collapse :collapse;">
+									        <option selected>Select</option>
+								        	<option>Sanpada</option>
+                                            <option>Dadar</option>
+                                          </select>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td>Team : </td>
+                                    <td> <select id="bolTeam" class="combox">
+									        <option selected>Select</option>
+								        	<option>SanpadaXI</option>
+                                            <option>DadarXI</option>
+                                          </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Select Bowler : </td>
+                                    <td> <select id="bowlerselect">
+									        <option selected>select</option>
+								        	<option>All Player</option>
+							              </select>
+                                    </td>
+                                </tr>
+                            </table>
+					</div>
+                     <br>
+                     <table align="center" width="100%">
+                           <tr>
+                                    <td align="center">
+                                        <input type="submit" name="submitit" class="BigButtonNoWid" onclick="valbutton(myform);return false;" value="Generate Report" />
+                                    </td>
+                                </tr>
+                     </table>
+
+
+		</form>
+	</BODY>
+</HTML>
+

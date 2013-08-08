@@ -1,0 +1,164 @@
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-attachment: fixed;
+	background-repeat: repeat-y;
+	background-position: center top;
+	background-image: url(main_bg.gif);
+	background-color: #7b7664;
+
+}
+table{
+	font-family: Arial;
+	font-size: 9pt;
+	color: #666666;
+	text-decoration: none;
+	line-height: 150%;
+	font-weight: normal;
+}
+td {
+	font-family: Arial;
+	font-size: 9pt;
+	color: #FFFFFF;
+	text-decoration: none;
+	line-height: 150%;
+	font-weight: normal;
+}
+
+.text {
+	font-family: arial;
+	font-size: 9pt;
+	text-decoration: none;
+	border: 1px solid #88adde;
+}
+
+textarea {
+	font-family: verdana;
+	font-size: 10pt;
+	text-decoration: none;
+	border: 1px solid #000000;
+}
+.noborder {
+	border: none;
+}
+select
+{
+	font-family: verdana;
+}
+
+.button{
+	font-family: Verdana, Arial;
+	font-size: 12px;
+	color: #FFFFFF;
+	text-decoration: none;
+	background-color: #749ed5;
+	border: 1px solid #5c85b4;
+	height: 20px;
+}
+.table
+{
+	border-collapse:collapse;
+	border: 1px solid #8fa8d3;
+	padding: 3px;
+}
+
+.lefttd {
+	font-family: Arial;
+	font-size: 9pt;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-decoration: none;
+	border: 1px solid #b4bfd3;
+	background-color: #799edf;
+
+}
+.righttd {
+	font-family: Arial;
+	font-size: 9pt;
+	text-decoration: none;
+	border: 1px solid #8fa8d3;
+	background-color: #FFFFFF;
+}
+
+.contentLastLight 
+{
+	font-family: Arial;
+	font-size: 9pt;
+	background-color: #e9ede9;
+	vertical-align:top;
+	color: #000000;
+}
+.contentLastDark 
+{
+	font-family: Arial;
+	font-size: 9pt;
+	background-color: #d4ebd8;
+	vertical-align:top;
+	color: #000000;
+}
+.contentLight 
+{
+	font-family: Arial;
+	font-size: 9pt;
+	background-color: #f3f3f3;
+	vertical-align:top;
+	color: #000000;
+}
+.contentDark 
+{
+	font-family: Arial;
+	font-size: 9pt;
+	background-color: #ededed;
+	vertical-align:top;
+	color: #000000;
+}
+
+a:link 
+{
+	font-family: Arial;
+	font-size: 9pt;
+	color: #7160C9;
+	text-decoration: none;
+}
+a:visited {
+	font-family: Arial;
+	font-size: 9pt;
+	color: #7160C9;
+	text-decoration: none;
+}
+a:active {
+	font-family: Arial;
+	font-size: 9pt;
+	color: #7160C9;
+	text-decoration: none;
+}
+a:hover {
+	font-family: Arial;
+	font-size: 9pt;
+	color: #FF6600;
+	text-decoration: none;
+}
+
+.content 
+{
+	font-family: Arial;
+	font-size: 9pt;
+	text-decoration: none;
+	background-color: #FFFFFF;
+	font-weight: bold;
+}
+
+
+.noRightSpacer
+{
+    width: 129px;
+}
+
+.text scoreboard {
+	font-family: arial;
+	font-size: 9pt;
+	text-decoration: none;
+	border: 1px solid #88adde;
+}

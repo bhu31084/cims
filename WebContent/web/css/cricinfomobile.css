@@ -1,0 +1,731 @@
+/* Cricinfo Mobile CSS Document */
+
+body {
+	background-color:#FFFFFF;
+	color: #000; 
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin: 0; 
+	padding: 0; 
+	text-align: left;
+	margin: 0px;
+}
+
+body, p, ol, ul, td, select, textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:   12px;
+  color: #000;
+}
+
+A:link,A:visited {
+	color: #0076ba;
+	text-decoration: none;
+}
+A:hover {
+	color: #0076ba;
+	text-decoration: underline;
+}
+/* header section */
+#mobilemenu {
+width: 930px;
+height: 25px;
+margin: 0px;
+padding: 0px;
+list-style: none;
+font-size: 12px;
+}
+#mobilemenu ul {
+list-style-type:none;
+padding: 0px 0 20px 0;
+margin: 0px;
+}
+#mobilemenu ul li {
+float:left;
+margin:0px;
+border-right: 1px solid #90bbe0;
+}
+#mobilemenu ul li a {
+display:block;
+padding:5px 10px;
+color:#90bbe0;
+font-weight: bold;
+text-decoration:none;
+}
+#mobilemenu ul li a.current {
+background-color:#90bbe0;
+color:#FFFFFF;
+font-weight: bold;
+}
+/* header section ends */
+
+/* Global HP */
+.boxtable {
+width: 300px;
+padding: 16px 0 0 27px;
+margin: 0px;
+}
+P.Boxhead {
+font-size: 12px;
+color: #b70000;
+margin-bottom: 24px;
+margin-top: 0px;
+font-weight: bold;
+text-decoration: none;
+}
+P.Boxbody {
+font-size: 12px;
+width: 170px;
+color: #515151;
+font-weight: normal;
+margin-top: 0px;
+margin-bottom: 10px;
+text-decoration: none;
+}
+.Boxlink {
+width: 170px;
+color: #0080dc;
+font-size: 10px;
+font-weight: normal;
+margin-top: 0px;
+text-decoration: none;
+}
+.Boxlink:link, .Boxlink:visited {
+color: #0080dc;
+font-size: 10px;
+font-weight: normal;
+text-decoration: none;
+}
+.Boxlink:hover {
+color: #0080dc;
+font-size: 10px;
+font-weight: normal;
+text-decoration: underline;
+}
+.brownband {
+background-color: #9b9b9b;
+padding: 7px 0 7px 8px;
+margin: 20px 0 20px 0px;
+font-size: 12px;
+color: #fff;
+}
+.box-bottomlink {
+font-size: 12px;
+color: #fff;
+font-weight: normal;
+text-decoration: none;
+}
+.box-bottomlink:link, .box-bottomlink:visited {
+font-size: 12px;
+color: #fff;
+font-weight: normal;
+text-decoration: none;
+}
+.box-bottomlink:hover {
+font-size: 12px;
+color: #fff;
+font-weight: normal;
+text-decoration: underline;
+}
+
+#mobicastsmall {
+	width: 115px;
+	font-size: 10px;
+	color: #ffffff;
+	font-weight: normal;
+	text-decoration: none;
+	/*float: right;*/
+	padding: 0px 15px 15px 12px;
+}
+
+*html #mobicastsmall {
+	padding: 0px 12px 15px;
+}
+
+.mobicastwhite {
+font-size: 10px;
+color: #ffffff;
+font-weight: normal;
+text-decoration: none;
+}
+
+.mobicastwhite:link, .mobicastwhite:visited {
+font-size: 10px;
+color: #ffffff;
+font-weight: normal;
+text-decoration: none;
+}
+.mobicastwhite:hover {
+font-size: 10px;
+color: #ffffff;
+font-weight: normal;
+text-decoration: underline;
+}
+/* Global HP ends */
+
+
+/* India HP */
+.indboxtable {
+width: 300px;
+padding: 16px 0 0 27px;
+margin: 0px;
+}
+
+P.indboxtopic {
+font-size: 16px;
+color: #0081c4;
+margin-bottom: 10px;
+smargin-top: 0px;
+font-weight: bold;
+text-decoration: none;
+}
+
+A.indboxtopic:link, A.indboxtopic:visited {
+font-size: 16px;
+color: #0081c4;
+margin-bottom: 10px;
+smargin-top: 0px;
+font-weight: bold;
+text-decoration: none;
+}
+
+A.indboxtopic:hover {
+font-size: 16px;
+color: #0081c4;
+margin-bottom: 10px;
+smargin-top: 0px;
+font-weight: bold;
+text-decoration: underline;
+}
+
+P.indBoxhead {
+font-size: 12px;
+color: #b70000;
+margin-bottom: 10px;
+margin-top: 0px;
+font-weight: bold;
+text-decoration: none;
+}
+P.indBoxbody {
+font-size: 12px;
+width: 170px;
+color: #515151;
+font-weight: normal;
+margin-top: 0px;
+margin-bottom: 5px;
+text-decoration: none;
+}
+
+P.indMobiBoxbody {
+font-size: 12px;
+/*width: 160px;*/
+color: #515151;
+font-weight: normal;
+margin-top: 0px;
+margin-bottom: 5px;
+text-decoration: none;
+}
+
+/*html P.indMobiBoxbody { width: 150px; }
+html:first-child P.indMobiBoxbody { width: 150px; } */
+
+P.WPboxbody {
+font-size: 12px;
+/*width: 300px;*/
+color: #515151;
+font-weight: normal;
+margin-top: 0px;
+margin-bottom: 5px;
+text-decoration: none;
+}
+.indBoxlink {
+width: 170px;
+color: #0080dc;
+font-size: 10px;
+font-weight: normal;
+margin-top: 0px;
+text-decoration: none;
+}
+.indBoxlink:link, .indBoxlink:visited {
+color: #0080dc;
+font-size: 10px;
+font-weight: normal;
+text-decoration: none;
+}
+.indBoxlink:hover {
+color: #0080dc;
+font-size: 10px;
+font-weight: normal;
+text-decoration: underline;
+}
+.indbrownband {
+	background-color: #85877d;
+	opacity: 0.75;
+	filter:alpha(opacity=75); /* IE's opacity*/
+	padding: 5px 0 5px 5px;
+	margin: 5px 0 20px -5px;
+	font-size: 12px;
+	color: #fff;
+}
+.indbox-bottomlink {
+font-size: 12px;
+color: #fff;
+font-weight: normal;
+text-decoration: none;
+}
+.indbox-bottomlink:link, .indbox-bottomlink:visited {
+font-size: 12px;
+color: #fff;
+font-weight: normal;
+text-decoration: none;
+}
+.indbox-bottomlink:hover {
+font-size: 12px;
+color: #fff;
+font-weight: normal;
+text-decoration: underline;
+}
+.WPtable {
+width: 470px;
+border-left: 2px solid #d5d5d5;
+border-right: 2px solid #d5d5d5;
+padding-left: 20px;
+padding-right: 20px;
+}
+P.WPhead {
+font-size: 16px;
+color: #0081c4;
+text-decoration: none;
+font-weight: bold;
+margin-bottom: 10px;
+margin-top: 0px;
+}
+P.WPhead:link,  P.WPhead:visited {
+font-size: 16px;
+color: #0081c4;
+text-decoration: none;
+font-weight: bold;
+margin-bottom: 10px;
+margin-top: 0px;
+}
+P.WPhead:hover {
+font-size: 16px;
+color: #0081c4;
+text-decoration: underline;
+font-weight: bold;
+margin-bottom: 10px;
+margin-top: 0px;
+}
+P.WPbodytxt {
+font-size: 12px;
+color: #000000;
+text-decoration: none;
+font-weight: normal;
+margin-bottom: 8px;
+margin-top: 0px;
+}
+.WPbrownband {
+background-color: #9b9b9b;
+padding: 5px 0 5px 8px;
+margin: 5px 0 5px -5px;
+font-size: 12px;
+color: #fff;
+}
+.WPbox-bottomlink {
+font-size: 12px;
+color: #fff;
+font-weight: normal;
+text-decoration: none;
+}
+.WPbox-bottomlink:link, .WPbox-bottomlink:visited {
+font-size: 12px;
+color: #fff;
+font-weight: normal;
+text-decoration: none;
+}
+.WPbox-bottomlink:hover {
+font-size: 12px;
+color: #fff;
+font-weight: normal;
+text-decoration: underline;
+}
+.WPdownloadtxt {
+font-size: 10px;
+color: #000000;
+font-weight: normal;
+text-decoration: none;
+}
+.WPdownloadtxt:link, .WPdownloadtxt:visited {
+font-size: 10px;
+color: #000000;
+font-weight: normal;
+text-decoration: none;
+}
+.WPdownloadtxt:hover {
+font-size: 10px;
+color: #000000;
+font-weight: normal;
+text-decoration: underline;
+}
+/* India HP ends */
+
+/* Genie section starts */
+.GenieTable {
+width: 948px;
+border-left: 1px solid #d5d5d5;
+border-right: 1px solid #d5d5d5;
+padding: 0px;
+}
+
+.Geniehead {
+color: #0076ba;
+font-size: 18px;
+font-weight: bold;
+margin-bottom: 5px;
+text-decoration: none;
+}
+.geniemenu { 
+font-family: Arial, Helvetica, sans-serif; 
+font-size: 11px; 
+color: #000000; 
+font-weight: normal; 
+text-decoration: none; 
+padding: 5px 0px 5px 0px;
+}
+a.geniemenu:link, a.geniemenu:visited { 
+font-size: 11px; 
+color: #000000; 
+text-decoration: none;
+}
+a.geniemenu:hover { 
+color: #000000; 
+text-decoration: underline; 
+}
+.geniemenu a.current {
+font-size: 11px; 
+color: #0076ba; 
+text-decoration: none;
+font-weight: bold;
+padding: 5px 0px 5px 0px;
+text-align:center;
+}
+.geniemenu a.current:link, .geniemenu a.current:visited {
+font-size: 11px; 
+color: #0076ba; 
+text-decoration: none;
+font-weight: bold;
+}
+.geniemenu a.current:hover {
+font-size: 11px; 
+color: #0076ba; 
+text-decoration: none;
+text-decoration: underline;
+}
+
+P.Genietxt-head {
+font-size: 12px;
+color: #000000;
+font-weight: bold;
+padding-bottom: 10px;
+margin-bottom: 20px;
+border-bottom: 1px dotted #a8a8a8;
+}
+
+P.Genietxt {
+font-size: 12px;
+color: #000000;
+font-weight: normal;
+margin-bottom: 15px;
+padding: 0px;
+}
+
+.Geniebody_txt {
+font-size: 12px;
+color: #000000;
+font-weight: normal;
+text-decoration: none;
+padding: 5px;
+padding-left: 0px;
+}
+
+P.Geniefaq-head {
+font-size: 12px;
+color: #000000;
+font-weight: bold;
+padding: 0px;
+}
+
+.Geniefaq_txt {
+font-size: 10px;
+color: #000000;
+font-weight: normal;
+padding: 0px;
+text-decoration: none;
+}
+.Geniefaq_txt:link, .Geniefaq_txt:visited {
+font-size: 10px;
+color: #000000;
+font-weight: normal;
+padding: 0px;
+text-decoration: none;
+}
+.Geniefaq_txt:hover {
+font-size: 10px;
+color: #000000;
+font-weight: normal;
+text-decoration: underline;
+}
+.GenieKMtxt{font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000000;}
+.GenieKMtxt1{ font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000000; text-align:justify;}
+.GenieFAQtxtque{font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#0081C3; font-weight:bold; text-decoration:none; text-align:justify;}
+.usgenietext { font-family: Arial, Helvetica, sans-serif; color: #000000; font-size: 12px; text-decoration: none; }
+.usgeniebluetext { font-family: Arial, Helvetica, sans-serif; color: #0082c6; font-size: 12px; text-decoration:none; }
+a.usgeniebluetext:visited, a.usgeniebluetext:link { text-decoration: none; font-size: 12px; color: #0082c6; }
+a.usgeniebluetext:hover { font-size: 12px; color: #0082c6; text-decoration: underline; }
+
+.GenieHSblk-txt { font-family:Arial, Helvetica, sans-serif; font-size:12; color:#000000; text-decoration: none; }
+.GenieHSblu-txt { font-family:Arial, Helvetica, sans-serif; font-size:12; color:#2a92d4; text-decoration: none; }
+.GenieHStable { border:1px; border-color:#0066CB; border-style:solid; }
+.GenieHSpadd { padding:10px;}
+
+/* Genie section ends */
+
+/* mobicast section starts */
+
+.mobicast-txt {
+font-size: 12px;
+color: #b70000;
+font-weight: bold;
+text-decoration: none;
+margin-bottom: 5px;
+}
+
+.mobicastmenu { 
+font-family: Arial, Helvetica, sans-serif; 
+font-size: 11px; 
+color: #000000; 
+font-weight: normal; 
+text-decoration: none; 
+padding: 5px 0px 5px 0px;
+text-align:center;
+}
+a.mobicastmenu:link, a.mobicastmenu:visited { 
+color: #000000;
+text-decoration: none;
+}
+a.mobicastmenu:hover { 
+color: #000000; 
+text-decoration: underline; 
+}
+.mobicastmenu a.current {
+color: #0076ba; 
+text-decoration: none;
+font-weight: bold;
+text-align:center;
+}
+.mobicastmenu a.current:link, .mobicastmenu a.current:visited {
+color: #0076ba; 
+text-decoration: none;
+font-weight: bold;
+}
+.mobicastmenu a.current:hover {
+color: #0076ba; 
+text-decoration: none;
+text-decoration: underline;
+}
+
+.mobicastsmalltxt {
+font-size: 11px;
+color: #000000;
+font-weight: normal;
+text-decoration: none;
+/*margin-top: 2px;*/
+margin-bottom: 3px;
+}
+
+.mobicastbluetxt {
+font-size: 12px;
+color: #4aaad6;
+font-weight: bold;
+text-decoration: none;
+margin-top: 2px;
+}
+.feature-head {
+font-size: 12px;
+color: #0076ba;
+font-weight: bold;
+text-decoration: none;
+margin-top: 0px;
+margin-bottom: 10px;
+}
+.mobicastlist {
+font: normal 12px Arial, Helvetica, sans-serif;
+color: #000000;
+text-decoration: none;
+}
+.mobicastlist a:visited, .mobicastlist a:link{
+color: #0075ba;
+font-size: 12px;
+line-height: 100%;
+text-decoration: underline;
+font-weight: bold;
+}
+.mobicastlist a:hover {
+	color: #0075ba;
+	font-size: 12px;
+	line-height: 100%;
+	text-decoration: underline;
+	font-weight: bold;
+}
+.mobicastfootertxt {
+font-size: 10px;
+color: #000000;
+font-weight: normal;
+text-decoration: none;
+margin-top: 2px;
+margin-bottom: 3px;
+}
+#devtable 
+{	
+	width: 540px;
+	padding:0px;
+	margin:0px;
+}
+#manufacturer {
+    padding-top: 20px;
+	padding-bottom: 10px;
+	border-bottom: dashed 1px #aaa;
+	
+}
+.blue_text
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#52ABD5;
+	width: 185px;
+}
+.black_text
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#000000;
+}
+/* mobicast section ends */
+
+/* textservice section starts */
+P.TShead {
+font-size: 12px;
+color: #000000;
+font-weight: bold;
+padding-bottom: 10px;
+margin-bottom: 10px;
+}
+.TSmsg-txt {
+font-size: 18px;
+color: #b70000;
+font-weight: bold;
+text-decoration: none;
+}
+.TSlist {
+font: bold 16px Arial, Helvetica, sans-serif;
+color: #000000;
+text-decoration: none;
+}
+.TSlist a:visited, .TSlist a:link{
+color: #000000;
+font-size: 16px;
+line-height: 100%;
+text-decoration: none;
+font-weight: bold;
+}
+.TSlist a:hover {
+	color: #00000;
+	font-size: 16px;
+	line-height: 100%;
+	text-decoration: underline;
+	font-weight: bold;
+}
+.TSlistbody {
+	color: #00000;
+	font-size: 12px;
+	line-height: 100%;
+	text-decoration: none;
+	font-weight: normal;
+}
+.TSlistmsg-txt {
+font-size: 16px;
+color: #b70000;
+font-weight: bold;
+text-decoration: none;
+}
+/* textservice section ends */
+
+
+/* wallpaper section */
+
+
+/* wallpaper section ends */
+
+/* Footer starts */
+.footerlinks {
+font-size: 11px;
+color: #757474;
+line-height: 15px;
+font-weight: normal;
+text-decoration: none;
+}
+.footerlinks:link, .footerlinks:visited {
+font-size: 11px;
+color: #757474;
+line-height: 15px;
+font-weight: normal;
+text-decoration: none;
+}
+.footerlinks:hover {
+font-size: 11px;
+color: #757474;
+line-height: 15px;
+font-weight: normal;
+text-decoration: underline;
+}
+.footertext {
+font-size: 11px;
+color: #8f8f8f;
+line-height: 15px;
+font-weight: bold;
+text-decoration: none;
+}
+.footerespn {
+font-size: 11px;
+color: #c40000;
+font-weight: bold;
+text-decoration: none;
+}
+.footerespn:link, .footerespn:visited {
+font-size: 11px;
+color: #c40000;
+font-weight: bold;
+text-decoration: none;
+}
+.footerespn:hover {
+font-size: 11px;
+color: #c40000;
+font-weight: bold;
+text-decoration: underline;
+}
+.carriertxt {
+font-size: 13px;
+color: #7a7a7a;
+font-weight: bold;
+text-decoration: none;
+padding-right: 15px;
+}
+/* Footer starts ends */
+
+/* New Wap blurb */
+.wapkeytext { font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #FFFFFF; padding: 40px 15px 0 15px; }
+.wapkeytext1 { font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #FFFFFF; padding: 5px 15px 0 15px; }
+.wapkeyform { padding-left: 15px;
+margin-top: 5px;
+#margin-top:-10px; /*IE7*/
+}
+.wapkeytextfield { height: 16px; border: 1px solid #d1d1d1; font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #6c8aa2; font-weight: bold; }
