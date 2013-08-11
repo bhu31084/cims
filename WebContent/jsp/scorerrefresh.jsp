@@ -170,20 +170,20 @@
 		    battingscorercardCachedRowSet = lobjGenerateProc.GenerateStoreProcedure("esp_dsp_scorercard", vparam, "ScoreDB"); // Batsman List
 	    	vparam.removeAllElements();	
 			while(battingscorercardCachedRowSet.next()){
-				batsmanA = battingscorercardCachedRowSet.getString("bastmanA");
-				batsmanA_name = battingscorercardCachedRowSet.getString("batsmanA_name");
-				batsmanB = battingscorercardCachedRowSet.getString("batsmanB");
-				batsmanB_name = battingscorercardCachedRowSet.getString("batsmanB_name");
+				batsmanA = battingscorercardCachedRowSet.getString("bastmanA").replaceAll("\\W", " ");
+				batsmanA_name = battingscorercardCachedRowSet.getString("batsmanA_name").replaceAll("\\W", " ");
+				batsmanB = battingscorercardCachedRowSet.getString("batsmanB").replaceAll("\\W", " ");
+				batsmanB_name = battingscorercardCachedRowSet.getString("batsmanB_name").replaceAll("\\W", " ");
 				scorerCardTotal = battingscorercardCachedRowSet.getString("total");
 				totalball = battingscorercardCachedRowSet.getInt("totalball");
 				todaytotalball = battingscorercardCachedRowSet.getInt("todaytotalball");
-				lastManRun = battingscorercardCachedRowSet.getString("lastmanrun");
+				lastManRun = battingscorercardCachedRowSet.getString("lastmanrun").replaceAll("\\W", " ");
 				wkts = battingscorercardCachedRowSet.getString("wkts");
 				currentover = battingscorercardCachedRowSet.getString("overs");
 				lastWktTotal = battingscorercardCachedRowSet.getString("lastwkt");
 				remainingOver = battingscorercardCachedRowSet.getString("remaining");
 				patenershipball = battingscorercardCachedRowSet.getInt("patenershipball");
-				lastmanbatsmanName = battingscorercardCachedRowSet.getString("lastmanbatsmanName");
+				lastmanbatsmanName = battingscorercardCachedRowSet.getString("lastmanbatsmanName").replaceAll("\\W", " ");
 				allball = battingscorercardCachedRowSet.getString("allball1");
 			}
 			if(batsmanA_name.equalsIgnoreCase(lastmanbatsmanName)){
@@ -1221,11 +1221,11 @@ function hideMenu(){
 							
 							<div style="background:#ADADAD;position:absolute;z-index:2;display:none" id='time_<%=battingSummaryCachedRowSet.getString("batsmanid")%>' name='time_<%=battingSummaryCachedRowSet.getString("batsmanid")%>'><b>In Time:-</b><lable id='time<%=battingSummaryCachedRowSet.getString("batsmanid")%>'><%=battingSummaryCachedRowSet.getString("timein")%></lable></div>
 						</td>
-                        <td id='<%=battingSummaryCachedRowSet.getString("batsman").trim()%>' name='<%=battingSummaryCachedRowSet.getString("batsman")%>' nowrap="nowrap" align="left" class="lefttd">
-                           <%=battingSummaryCachedRowSet.getString("batsman")%> 
+                        <td id='<%=battingSummaryCachedRowSet.getString("batsman").trim().replaceAll("\\W", " ")%>' name='<%=battingSummaryCachedRowSet.getString("batsman").replaceAll("\\W", " ")%>' nowrap="nowrap" align="left" class="lefttd">
+                           <%=battingSummaryCachedRowSet.getString("batsman").replaceAll("\\W", " ")%> 
                         </td>
-                        <td class="lefttd" align="left" nowrap="nowrap"><%=battingSummaryCachedRowSet.getString("batsmanout")%></td>
-                        <td class="lefttd" align="left"  nowrap="nowrap"><%=battingSummaryCachedRowSet.getString("batsmanoutdiv")%></td>
+                        <td class="lefttd" align="left" nowrap="nowrap"><%=battingSummaryCachedRowSet.getString("batsmanout").replaceAll("\\W", " ")%></td>
+                        <td class="lefttd" align="left"  nowrap="nowrap"><%=battingSummaryCachedRowSet.getString("batsmanoutdiv").replaceAll("\\W", " ")%></td>
                         <td align="right"><%=battingSummaryCachedRowSet.getString("runs").equals("-1")?"":battingSummaryCachedRowSet.getString("runs")%></td>
                         <td align="right"><%=battingSummaryCachedRowSet.getString("balls").equals("-1")?"":battingSummaryCachedRowSet.getString("balls")%></td>
                         <td align="right"><%=battingSummaryCachedRowSet.getString("mins").equals("-1")?"":battingSummaryCachedRowSet.getString("mins")%></td>
@@ -1322,7 +1322,7 @@ function hideMenu(){
 <%				}
 %>
                     <td></td>
-                    <td align="left" class="lefttd" ><%=bowlerscoreeCachedRowSet.getString("bowler_name")%></td>
+                    <td align="left" class="lefttd" ><%=bowlerscoreeCachedRowSet.getString("bowler_name").replaceAll("\\W", " ")%></td>
                     <td align="right"><%=bowlerscoreeCachedRowSet.getString("noofover")%></td>
                     <td align="right"><%=bowlerscoreeCachedRowSet.getString("maiden")%></td>
                     <td align="right"><%=bowlerscoreeCachedRowSet.getString("runs")%></td>
@@ -1591,11 +1591,9 @@ function hideMenu(){
 			<option value="">--Select Batsman Name--</option>
 <%
 			while(newBatsmanCachedRowSet.next()){
-			
 %>
-			<option value="<%=newBatsmanCachedRowSet.getString("id")+"~"+newBatsmanCachedRowSet.getString("playername")%>"><%=newBatsmanCachedRowSet.getString("playername")%></option>
+			<option value="<%=newBatsmanCachedRowSet.getString("id")+"~"+newBatsmanCachedRowSet.getString("playername").replaceAll("\\W", " ")%>"><%=newBatsmanCachedRowSet.getString("playername").replaceAll("\\W", " ")%></option>
 <%
-			
 			}
 %>
 		</select></td>
@@ -1630,7 +1628,7 @@ function hideMenu(){
 					while(bowlerCachedRowSet.next()){
 %>
 			<option
-				value='<%=bowlerCachedRowSet.getString("playername")+'~'+ bowlerCachedRowSet.getString("id")+'~'+ bowlerCachedRowSet.getString("is_wkeeper")%>' <%=previousStrikerbowler.equalsIgnoreCase(bowlerCachedRowSet.getString("id"))?"selected":""%>><%=bowlerCachedRowSet.getString("playername")%></option>
+				value='<%=bowlerCachedRowSet.getString("playername").replaceAll("\\W", " ")+'~'+ bowlerCachedRowSet.getString("id")+'~'+ bowlerCachedRowSet.getString("is_wkeeper")%>' <%=previousStrikerbowler.equalsIgnoreCase(bowlerCachedRowSet.getString("id"))?"selected":""%>><%=bowlerCachedRowSet.getString("playername").replaceAll("\\W", " ")%></option>
 			<%
 					}
 %>

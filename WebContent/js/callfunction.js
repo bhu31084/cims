@@ -2116,7 +2116,7 @@ function Function() { // declear bastmen class
 			alert("Select batsman.");
 			return false;
 		} else {
-			var playerArr = $$(selbat).split("~");
+			var playerArr = $$(selbat).split("~").replaceAll("\\W", " ");
 			playerArr[1];
 			var r = confirm("Do you want to select (" + playerArr[1]
 					+ ")  as new batsman.");
