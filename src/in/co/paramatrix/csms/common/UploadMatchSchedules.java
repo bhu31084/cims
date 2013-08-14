@@ -306,8 +306,6 @@ public class UploadMatchSchedules extends HttpServlet {
 								while (rs.next()) {
 									seasonId = rs.getInt("id");
 								}	
-								//System.out.println(seasonId + "seasonId--------");
-								
 								rs.close();
 							}
 							if (seasonId == null) {
@@ -357,7 +355,7 @@ public class UploadMatchSchedules extends HttpServlet {
 						if (seasonId != null) {
 							String strSQL = "Select id from series_mst WHERE type='" + seriesTypeId + "' AND status='A' AND season = " + seasonId;
 							ResultSet rs = stmt.executeQuery(strSQL);
-							//System.out.println(strSQL.toString() + "strSQL=================");
+							
 							if (rs != null) {
 								while (rs.next()) {
 									seriesId = rs.getInt("id");
@@ -365,6 +363,11 @@ public class UploadMatchSchedules extends HttpServlet {
 								rs.close();
 							}
 						}
+						if(null == seriesId){
+							errorList.add("Series is not available for " + name +" for season "+season);
+							validData = false;
+						}
+						
 						//System.out.println(seriesId + "-------------seriesId--------");
 						/*if (seasonId != null && seriesId == null) {
 							// Insert entry for series into DB
@@ -477,7 +480,7 @@ public class UploadMatchSchedules extends HttpServlet {
 							strSQL.append(" AND venue ='" + venuesId + "'");
 							strSQL.append(" AND category ='" + matchCategoryId + "'");
 							strSQL.append(" AND round ='" + roundsId + "'");
-							//System.out.println(strSQL.toString() + "-----ddddd select");
+							System.out.println(strSQL.toString() + "-----ddddd select");
 							
 							ResultSet rs = stmt.executeQuery(strSQL.toString());
 							if (rs != null) {
