@@ -30,7 +30,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.apache.poi.util.StringUtil;
 import org.apache.xmlbeans.impl.piccolo.io.FileFormatException;
 
 public class UploadPlayerProfiles extends HttpServlet {
@@ -229,7 +228,7 @@ public class UploadPlayerProfiles extends HttpServlet {
 							validData = false;
 						}
 						if (map.get("First Name") != null) {
-							strFirstName = map.get("First Name");
+							strFirstName = map.get("First Name").replaceAll("\\W", " ").replaceAll("  ", " ");
 						} else {
 							errorList.add("Entry for First Name not found ");
 							validData = false;
@@ -242,7 +241,7 @@ public class UploadPlayerProfiles extends HttpServlet {
 						}
 						
 						if (map.get("Name in the score sheet") != null) {
-							strNameinthescoresheet = map.get("Name in the score sheet").trim();
+							strNameinthescoresheet = map.get("Name in the score sheet").trim().replaceAll("\\W", " ").replaceAll("  ", " ");
 							
 							int strlength = strNameinthescoresheet.length();
 							boolean validFlag = false;
@@ -260,10 +259,10 @@ public class UploadPlayerProfiles extends HttpServlet {
 						}
 						
 						if (map.get("Middle Name") != null) {
-							strMiddleName = map.get("Middle Name");
+							strMiddleName = map.get("Middle Name").replaceAll("\\W", " ").replaceAll("  ", " ");
 						}
 						if (map.get("Surname") != null) {
-							strLastName = map.get("Surname");
+							strLastName = map.get("Surname").replaceAll("\\W", " ").replaceAll("  ", " ");
 						}
 						if (map.get("Age_Group") != null) {
 							ageGroup = map.get("Age_Group");
@@ -282,7 +281,7 @@ public class UploadPlayerProfiles extends HttpServlet {
 							validData = false;		
 						}
 						if (map.get("Place of Birth(City/District)") != null) {
-							placeOfBirth = map.get("Place of Birth(City/District)");
+							placeOfBirth = map.get("Place of Birth(City/District)").replaceAll("\\W", " ").replaceAll("  ", " ");
 						}
 						if (map.get("Date of Birth") != null) {
 							strDOB = map.get("Date of Birth");
@@ -327,6 +326,8 @@ public class UploadPlayerProfiles extends HttpServlet {
 							}else {
 								displayName = strFirstName;
 							}
+							
+							displayName.replaceAll("\\W", " ").replaceAll("  ", " ");
 						}
 						
 						//Update 'Name in the score sheet' for Summary Report
@@ -382,27 +383,6 @@ public class UploadPlayerProfiles extends HttpServlet {
 							// Check for Players Information already exist in DB
 							Integer userId = getUserId(strFirstName, strMiddleName, strLastName, strDOB, stmt);
 							if (userId == null) {
-								/*
-								boolean validDisplayName = false;
-								while (!validDisplayName) {
-									try {
-										int displayCount = 0;
-										strSQL = "SELECT 1 FROM users_mst WHERE displayName ='" + displayName + "'";
-										System.out.println(strSQL);
-										rs = stmt.executeQuery(strSQL);
-										if (rs != null && rs.next()) {
-											validDisplayName = false;
-										} else {
-											validDisplayName = true;
-										}
-										rs.close();
-										if (!validDisplayName) {
-											displayName = getDisplayName(displayName, displayCount++);
-										}
-									} catch (Exception e) {
-										e.printStackTrace();
-									}
-								}*/
 
 								// Create NickName
 								String nickName = strFirstName.substring(0,1);
@@ -411,7 +391,7 @@ public class UploadPlayerProfiles extends HttpServlet {
 								ResultSet rsUsersMst = stmt.executeQuery("SELECT MAX(id) as id FROM users_mst");
 								if (rsUsersMst != null) {
 									while (rsUsersMst.next()) {
-										userIdToBeAssigned = rsUsersMst.getInt("id");
+										userIdToBeAssigned = rsUsersMst.getInt("id")+1;
 										break;
 									}
 									rsUsersMst.close();
@@ -424,26 +404,6 @@ public class UploadPlayerProfiles extends HttpServlet {
 								}
 								nickName += ""+userIdToBeAssigned;
 								
-								/*int location = 1;
-								boolean validNickName = false;
-								while (!validNickName) {
-									nickName = getNickName(nickName, location, strLastName);
-									location++;
-									// Check nickname exist in table
-									strSQL = "SELECT 1 FROM users_mst WHERE nickname ='" + nickName + "'";
-									System.out.println(strSQL);
-									try {
-										rs = stmt.executeQuery(strSQL);
-										if (rs != null && rs.next()) {
-											validNickName = false;
-										} else {
-											validNickName = true;
-										}
-										rs.close();
-									} catch (Exception e) {
-										e.printStackTrace();
-									}
-								}*/
 								// Insert new entry
 								sbQuery = new StringBuffer("INSERT INTO users_mst (");
 								sbQuery.append("nickname,");
@@ -473,7 +433,7 @@ public class UploadPlayerProfiles extends HttpServlet {
 									sbQuery.append("'" + strMiddleName + "',");
 								}
 								if (strLastName != null) {
-									sbQuery.append("'" + strLastName + "',");
+									sbQuery.append("'" + strLastName+ "',");
 								}
 								// Password will be default pass2 for every 1st entry
 								sbQuery.append("'pass2',");
