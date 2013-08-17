@@ -258,18 +258,32 @@ Company 	 : Paramatrix Tech Pvt Ltd.
 	}
 
 	function update(event) {
-		if(event.keyCode == 13 || event.keyCode == 0 || event.keyCode == 9 || event.button == 0 ){
+		if(event.keyCode == 13 || event.keyCode == 0 || event.keyCode == 9 || (event.button && event.button == 0) ){
 			document.frmseason.resultsearchtxt.value = document.frmseason.itemlist.options[document.frmseason.itemlist.selectedIndex].text;
 			document.getElementById("resultsearchtxt").focus();
 			hideList();
 			document.frmseason.hditemlist.value = document.frmseason.itemlist.value;
-		}
-		if (event.keyCode == 27) {
+		}else  if (event.keyCode == 27) {
 			document.getElementById("lister").style.display = "none";
 		}
 	}
 
 	function showList(event) {
+	      if(event.keyCode == 40)
+	      {
+	        document.getElementById("lister").style.display="block";
+	        document.getElementById("itemlist").focus();
+	        }        
+	        if(document.getElementById("itemlist").value=="0" ||document.getElementById("itemlist").value==""||event.keyCode == 0)
+	        {
+	         document.getElementById("lister").style.display="block";
+	        }
+	        if(event.keyCode == 27){
+	         document.getElementById("lister").style.display="none";
+	        }
+	}
+    
+	function showListOld(event) {
 		if(event.keyCode == 40 || event.button==0){
 			document.getElementById("lister").style.display = "block";
 			document.getElementById("itemlist").focus();
@@ -296,9 +310,13 @@ Company 	 : Paramatrix Tech Pvt Ltd.
 				var responseResult = xmlHttp.responseText;
 				try //Internet Explorer
 				{
-					xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-					xmlDoc.async = "false";
-					xmlDoc.loadXML(responseResult);
+					if (window.ActiveXObject){
+						xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+						xmlDoc.async = "false";
+						xmlDoc.loadXML(responseResult);
+					}else{
+						xmlDoc = document.implementation.createDocument("","",null);	
+					}
 					var mess = responseResult.split("<br>");
 					document.getElementById("txtappealname").value = mess[1]//xmlDoc.getElementsByTagName("Name")[0].childNodes[0].nodeValue;            
 				} catch (e) {
@@ -315,11 +333,10 @@ Company 	 : Paramatrix Tech Pvt Ltd.
 		}
 	}
 
-	function changeList() {
+	function changeList(event) {
 		if (document.getElementById("lister").style.display == "none"){
-			showList();
-		}	
-		else{
+			showList(event);
+		} else{
 			hideList();
 		}		
 	}
@@ -329,9 +346,6 @@ Company 	 : Paramatrix Tech Pvt Ltd.
 		}
 		else {
 			which.style.background = "";  // yellow
-			//alert ("This box must be filled!");
-			//which.focus();
-			//return false;
 		}
 	}
 </script>
@@ -372,10 +386,12 @@ Company 	 : Paramatrix Tech Pvt Ltd.
 			<tr align="left" class="contentDark">
 				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search</td>
 				<td><input class="textBoxAdminSearch" type="text"
-					name="resultsearchtxt" size="20"
+					name="resultsearchtxt" 
+					id="resultsearchtxt"
+					size="20"
 					onKeyUp="javascript:obj1.bldUpdate(event);"> <input
 					class="button1" id="show" type="button" value="V"
-					onClick="changeList();">
+					onClick="changeList(event);">
 
 
 				<DIV align="left" style="width: 250px">
