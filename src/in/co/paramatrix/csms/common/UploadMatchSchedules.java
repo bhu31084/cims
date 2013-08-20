@@ -301,6 +301,7 @@ public class UploadMatchSchedules extends HttpServlet {
 						Integer seasonId = null;
 						if (season != null) {
 							String strSQL = "Select id from seasons_mst WHERE name='" + season + "' AND status='A'";
+							System.out.println(strSQL);
 							ResultSet rs = stmt.executeQuery(strSQL);
 							if (rs != null) {
 								while (rs.next()) {
@@ -318,6 +319,7 @@ public class UploadMatchSchedules extends HttpServlet {
 						Integer typeId = null;
 						if (type != null) {
 							String strSQL = "Select id from matchtypes_mst WHERE name='" + type + "' AND status='A'";
+							System.out.println(strSQL);
 							ResultSet rs = stmt.executeQuery(strSQL);
 							if (rs != null) {
 								while (rs.next()) {
@@ -336,6 +338,7 @@ public class UploadMatchSchedules extends HttpServlet {
 						Integer seriesTypeId = null;
 						if (name != null) {
 							String strSQL = "Select id from seriestypes_mst WHERE name='" + name + "' AND status='A'";
+							System.out.println(strSQL);
 							ResultSet rs = stmt.executeQuery(strSQL);
 							if (rs != null) {
 								while (rs.next()) {
@@ -352,8 +355,9 @@ public class UploadMatchSchedules extends HttpServlet {
 						//System.out.println(seriesTypeId + "seriesTypeId--------  " + name);
 						// Get SeriesId
 						Integer seriesId = null;
-						if (seasonId != null) {
+						if (seasonId != null && seriesTypeId != null) {
 							String strSQL = "Select id from series_mst WHERE type='" + seriesTypeId + "' AND status='A' AND season = " + seasonId;
+							System.out.println(strSQL);
 							ResultSet rs = stmt.executeQuery(strSQL);
 							
 							if (rs != null) {
@@ -396,6 +400,7 @@ public class UploadMatchSchedules extends HttpServlet {
 						Integer team1Id = null;
 						if (team1 != null) {
 							String strSQL = "SELECT id FROM teams_mst WHERE (team_name='" + team1 + "' OR nickname='" + team1 + "') AND status='A'";
+							System.out.println(strSQL);
 							ResultSet rs = stmt.executeQuery(strSQL);
 							if (rs != null) {
 								while (rs.next()) {
@@ -414,6 +419,7 @@ public class UploadMatchSchedules extends HttpServlet {
 						Integer team2Id = null;
 						if (team2 != null) {
 							String strSQL = "SELECT id FROM teams_mst WHERE (team_name='" + team2 + "' OR nickname='" + team2 + "') AND status='A'";
+							System.out.println(strSQL);
 							ResultSet rs = stmt.executeQuery(strSQL);
 							if (rs != null) {
 								while (rs.next()) {
@@ -431,6 +437,7 @@ public class UploadMatchSchedules extends HttpServlet {
 						Integer venuesId = null;
 						if (venue != null) {
 							String strSQL = "Select id from venues_mst WHERE name='" + venue + "' AND status='A'";
+							System.out.println(strSQL);
 							ResultSet rs = stmt.executeQuery(strSQL);
 							if (rs != null) {
 								while (rs.next()) {
@@ -451,6 +458,7 @@ public class UploadMatchSchedules extends HttpServlet {
 						Integer roundsId = null;
 						if (round != null) {
 							String strSQL = "Select id from rounds_mst WHERE name='" + round+ "' AND status='A'";
+							System.out.println(strSQL);
 							ResultSet rs = stmt.executeQuery(strSQL);
 							if (rs != null) {
 								while (rs.next()) {
@@ -480,7 +488,7 @@ public class UploadMatchSchedules extends HttpServlet {
 							strSQL.append(" AND venue ='" + venuesId + "'");
 							strSQL.append(" AND category ='" + matchCategoryId + "'");
 							strSQL.append(" AND round ='" + roundsId + "'");
-							System.out.println(strSQL.toString() + "-----ddddd select");
+							System.out.println(strSQL.toString());
 							
 							ResultSet rs = stmt.executeQuery(strSQL.toString());
 							if (rs != null) {
