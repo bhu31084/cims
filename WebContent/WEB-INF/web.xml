@@ -150,13 +150,24 @@
  	</servlet-mapping>
 
 
- <servlet>
-    <servlet-name>UploadUmpirCoachesData</servlet-name>
-    <servlet-class>in.co.paramatrix.csms.common.UploadUmpirCoachesData</servlet-class>
- </servlet>
- <servlet-mapping>   
-    <servlet-name>UploadUmpirCoachesData</servlet-name>
-    <url-pattern>/UploadUmpirCoachesData</url-pattern>
- </servlet-mapping>
+	<servlet>
+	    <servlet-name>UploadUmpirCoachesData</servlet-name>
+	    <servlet-class>in.co.paramatrix.csms.common.UploadUmpirCoachesData</servlet-class>
+	</servlet>
+	<servlet-mapping>   
+	    <servlet-name>UploadUmpirCoachesData</servlet-name>
+	    <url-pattern>/UploadUmpirCoachesData</url-pattern>
+	</servlet-mapping>
 	
+	<servlet>
+		<description>
+		</description>
+		<display-name>PointsTableAPI</display-name>
+		<servlet-name>PointsTableAPI</servlet-name>
+		<servlet-class>in.co.paramatrix.csms.common.PointsTableAPI</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PointsTableAPI</servlet-name>
+		<url-pattern>/PointsTableAPI</url-pattern>
+	</servlet-mapping>
 </web-app>
