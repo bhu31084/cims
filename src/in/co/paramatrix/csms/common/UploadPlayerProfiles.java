@@ -553,7 +553,12 @@ public class UploadPlayerProfiles extends HttpServlet {
 							}
 							rs.close();
 
-							if(validClub){
+							if(seasonId == null){
+								errorList.add("No Season entry forund for "+season);
+								validData = false;
+							}
+							
+							if(validClub && seasonId != null){
 								// Check for data exist in user_club_map
 								sbQuery = new StringBuffer("SELECT 1 FROM user_club_map WHERE user_role_id=" + userRoleId+ " AND season=" + seasonId +" AND club='"+associationsId+"' AND status='A'");
 								System.out.println(sbQuery);
