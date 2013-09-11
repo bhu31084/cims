@@ -12,8 +12,6 @@ public class MatchInfoDTO {
 	private String matchId;
 	private String type;
 	private String date;
-	private String dateEnd;
-	private Integer noOfDays;
 	private String gameType;
 	private String dayNight;
 	private String seriesName;
@@ -50,47 +48,8 @@ public class MatchInfoDTO {
 	private String umpire2;
 	private String umpire3;
 	
-	private String inning1BattingScore;
-	private String inning2BattingScore;
-	private String inning3BattingScore;
-	private String inning4BattingScore;
 	
-	public String getInning1BattingScore() {
-		return this.inning1BattingScore;
-	}
-	public void setInning1BattingScore(String inning1BattingScore) {
-		this.inning1BattingScore = inning1BattingScore;
-	}
-	public String getInning2BattingScore() {
-		return this.inning2BattingScore;
-	}
-	public void setInning2BattingScore(String inning2BattingScore) {
-		this.inning2BattingScore = inning2BattingScore;
-	}
-	public String getInning3BattingScore() {
-		return this.inning3BattingScore;
-	}
-	public void setInning3BattingScore(String inning3BattingScore) {
-		this.inning3BattingScore = inning3BattingScore;
-	}
-	public String getInning4BattingScore() {
-		return this.inning4BattingScore;
-	}
-	public void setInning4BattingScore(String inning4BattingScore) {
-		this.inning4BattingScore = inning4BattingScore;
-	}
-	public String getDateEnd() {
-		return this.dateEnd;
-	}
-	public void setDateEnd(String dateEnd) {
-		this.dateEnd = dateEnd;
-	}
-	public Integer getNoOfDays() {
-		return this.noOfDays;
-	}
-	public void setNoOfDays(Integer noOfDays) {
-		this.noOfDays = noOfDays;
-	}
+	
 	/**
 	 * @return the matchId
 	 */
