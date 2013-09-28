@@ -13,6 +13,9 @@ import in.co.paramatrix.csms.logwriter.LogWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Vector;
 
 import javax.servlet.ServletException;
@@ -68,6 +71,8 @@ public class MatchAPI extends HttpServlet {
 					matchInfoDTO.setTeam2Name(lobjCachedRowSet.getString("team2name"));
 					matchInfoDTO.setType(lobjCachedRowSet.getString("matchtype"));
 					matchInfoDTO.setDate(lobjCachedRowSet.getString("matchdate"));
+					matchInfoDTO.setDateEnd(lobjCachedRowSet.getString("date_end"));
+					matchInfoDTO.setNoOfDays(lobjCachedRowSet.getInt("match_days"));
 					matchInfoDTO.setTossWinner(lobjCachedRowSet.getString("toss_winner"));
 					matchInfoDTO.setElected(lobjCachedRowSet.getString("elected"));
 					matchInfoDTO.setCity(lobjCachedRowSet.getString("city"));
@@ -84,7 +89,6 @@ public class MatchAPI extends HttpServlet {
 					 apiCompleteFlag = "Incomplete";
 				 }
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				apiCompleteFlag = "Incomplete";
 				e.printStackTrace();
 			}	  		
@@ -99,9 +103,13 @@ public class MatchAPI extends HttpServlet {
 					matchInfoDTO.setMatchResult(statusCachedRowSet.getString("result"));
 					matchInfoDTO.setMatchstate(statusCachedRowSet.getString("status"));
 					
+					matchInfoDTO.setInning1BattingScore(statusCachedRowSet.getString("inn1_score"));
+					matchInfoDTO.setInning2BattingScore(statusCachedRowSet.getString("inn2_score"));
+					matchInfoDTO.setInning3BattingScore(statusCachedRowSet.getString("inn3_score"));
+					matchInfoDTO.setInning4BattingScore(statusCachedRowSet.getString("inn4_score"));
+					
 				 }
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				apiCompleteFlag = "Incomplete";
 				e.printStackTrace();
 			}	  		
@@ -114,7 +122,6 @@ public class MatchAPI extends HttpServlet {
 					matchInfoDTO.setMatchResult(resultCachedRowSet.getString("result"));
 				 }
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				apiCompleteFlag = "Incomplete";
 				e.printStackTrace();
 			}	  		
@@ -181,7 +188,6 @@ public class MatchAPI extends HttpServlet {
 					}
 					
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					apiCompleteFlag = "Incomplete";
 					e.printStackTrace();
 				}	  		
@@ -287,7 +293,6 @@ public class MatchAPI extends HttpServlet {
 					}
 					
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					apiCompleteFlag = "Incomplete";
 					e1.printStackTrace();
 				}
@@ -416,8 +421,11 @@ public class MatchAPI extends HttpServlet {
 						float srRate = (float)((float)totalRun/totalBall) * 6; 
 						String runRate = String.format("%2.02f", srRate);
 	                	
-	                	fallWicketXML = fallWicketXML + "<fow wicketno='"+fallOfWicketCachedRowSet.getString("srno")+"' "+
-	                	"runs='"+fallOfWicketCachedRowSet.getString("runs")+"' overs='"+fallOfWicketCachedRowSet.getString("overs")+"' batsman_id='"+fallOfWicketCachedRowSet.getString("batsman_id")+"' runrate='"+runRate+"' />";
+	                	fallWicketXML = fallWicketXML + "<fow wicketno='"+fallOfWicketCachedRowSet.getString("srno")+"' "
+	                	+"runs='"+fallOfWicketCachedRowSet.getString("runs")
+	                	+"' overs='"+fallOfWicketCachedRowSet.getString("overs")
+	                	+"' batsman_id='"+fallOfWicketCachedRowSet.getString("batsman_id")
+	                	+"' runrate='"+runRate+"' />";
 	                			
 	                }
 	                fallWicketXML = fallWicketXML +"</fallofwickets>";
@@ -444,16 +452,183 @@ public class MatchAPI extends HttpServlet {
         	apiCompleteFlag = "Incomplete";
         }
         
-		String matchInfoObject =
+        //Create Match Dates ... 09 Aug - 12 Aug 2012
+        // DEC 26-28, 2012  .... DEC 29, 2012 - JAN 01, 2013 ...... NOV 30 - DEC 3, 2012
+        SimpleDateFormat sdf_dd_MMM_yyyy = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf_MMM_dd_yyyy = new SimpleDateFormat("MMM dd, yyyy");
+        SimpleDateFormat sdf_dd = new SimpleDateFormat("dd");
+        SimpleDateFormat sdf_MMM = new SimpleDateFormat("MMM");
+        SimpleDateFormat sdf_yyyy = new SimpleDateFormat("yyyy");
+        StringBuffer strMatchDates = new StringBuffer("");
+		
+        int iNoOfDays = matchInfoDTO.getNoOfDays();
+        //Check Match duration to form a string
+        if(iNoOfDays > 1){
+        	String strStartDay = "";
+            String strStartMonth = "";
+            String strStartYear = "";
+        	String strEndDay = "";
+            String strEndMonth = "";
+            String strEndYear = "";
+            
+            try {
+            	if(null != matchInfoDTO.getDate() && !"".equals(matchInfoDTO.getDate())){
+	            	Date dtStartDate =  sdf_dd_MMM_yyyy.parse(matchInfoDTO.getDate());
+	    			strStartDay = sdf_dd.format(dtStartDate);
+	    			strStartMonth = sdf_MMM.format(dtStartDate).toUpperCase();
+	    			strStartYear = sdf_yyyy.format(dtStartDate);
+            	}
+            	if(null != matchInfoDTO.getDateEnd() && !"".equals(matchInfoDTO.getDateEnd())){
+	    			Date dtEndDate =  sdf_dd_MMM_yyyy.parse(matchInfoDTO.getDateEnd());
+	    			strEndDay = sdf_dd.format(dtEndDate);
+	    			strEndMonth = sdf_MMM.format(dtEndDate).toUpperCase();
+	    			strEndYear = sdf_yyyy.format(dtEndDate);
+            	}
+    		} catch (ParseException e) {
+    			e.printStackTrace();
+    			apiCompleteFlag = "Incomplete";
+                log.writeErrLog(MatchAPI.class, matchId, e.toString());
+    		}
+    		
+    		// DEC 26-28, 2012  .... DEC 29, 2012 - JAN 01, 2013 ...... NOV 30 - DEC 03, 2012
+    		//Check for year change
+    		if(strStartYear.equals(strEndYear)){
+    			//Check for Month change
+    			if(strStartMonth.equals(strEndMonth)){
+    				// Year and month is same .. e.g. DEC 26-28, 2012
+    				strMatchDates = new StringBuffer(strStartMonth +" " + strStartDay);
+    				strMatchDates.append("-"+strEndDay);
+    				strMatchDates.append(", "+strStartYear);
+    			}else{
+    				//Year is same but month is different ... e.g. NOV 30 - DEC 03, 2012
+    				strMatchDates = new StringBuffer(strStartMonth +" " + strStartDay);
+    				strMatchDates.append(" - "+strEndMonth +" " + strEndDay);
+    				strMatchDates.append(", "+strStartYear);
+    			}
+    			
+    		}else{
+    			//DEC 29, 2012 - JAN 01, 2013
+    			strMatchDates = new StringBuffer(strStartMonth +" " + strStartDay +", "+strStartYear + " - " +strEndMonth +" " + strEndDay +", "+strEndYear);
+    		}
+    		
+        }else{
+        	try {
+        		//For single day matches use start day and format ... e.g DEC 21, 2012
+        		if(matchInfoDTO.getDate() != null && !"".equals(matchInfoDTO.getDate())){
+        			strMatchDates = new StringBuffer(sdf_dd.format(sdf_dd_MMM_yyyy.parse(matchInfoDTO.getDate())));
+        		}
+    		} catch (ParseException e) {
+    			e.printStackTrace();
+    			apiCompleteFlag = "Incomplete";
+                log.writeErrLog(MatchAPI.class, matchId, e.toString());
+    		}
+        }
+        
+        
+        //Create String for Match result
+        
+        Integer inning1BattingRuns =0;
+        Integer inning2BattingRuns = 0;
+        Integer inning2Wickets = 0;
+        Integer inning3BattingRuns = 0;
+        Integer inning4BattingRuns = 0;
+        Integer inning4Wickets = 0;
+        String strMatchStatus = matchInfoDTO.getResultWinner();
+        //Check match state is completed and resulted 
+        if(null == strMatchStatus || "".equals(strMatchStatus)){
+        	strMatchStatus = matchInfoDTO.getMatchResult();
+        }else if("Match Completed".equalsIgnoreCase(matchInfoDTO.getMatchstate().trim())){
+	        try{
+	        	if(null != matchInfoDTO.getInning1BattingScore() && !"".equals(matchInfoDTO.getInning1BattingScore())){
+	        		inning1BattingRuns = Integer.parseInt(matchInfoDTO.getInning1BattingScore().split("/")[0]);
+	        	}
+	        	
+	        	if(null != matchInfoDTO.getInning2BattingScore() && !"".equals(matchInfoDTO.getInning2BattingScore())){
+			        String[] strInning2Score = matchInfoDTO.getInning2BattingScore().split("/");
+			        inning2BattingRuns = Integer.parseInt(strInning2Score[0].trim());
+			        if(strInning2Score.length > 1){
+			        	inning2Wickets = Integer.parseInt(strInning2Score[1].trim());
+			        }
+	        	}
+	        	
+	        	if(null != matchInfoDTO.getInning3BattingScore() && !"".equals(matchInfoDTO.getInning3BattingScore())){
+	        		inning3BattingRuns = Integer.parseInt(matchInfoDTO.getInning3BattingScore().split("/")[0]);
+	        	}
+		        
+		        if(null != matchInfoDTO.getInning4BattingScore() && !"".equals(matchInfoDTO.getInning4BattingScore())){
+			        String[] strInning4Score = matchInfoDTO.getInning4BattingScore().split("/");
+			        inning4BattingRuns = Integer.parseInt(strInning4Score[0].trim());
+			        if(strInning4Score.length > 1){
+			        	inning4Wickets = Integer.parseInt(strInning4Score[1].trim());
+			        }
+		        }
+		        
+	        	//check for Multi innings matches 
+	        	if(inning3BattingRuns > 0){
+	        		//Check for follow on in two innings per side match
+	        		if(matchInfoDTO.getInning1Batting() != matchInfoDTO.getInning3Batting()){
+	        			//If Follow on given check for innings victory
+	        			if(inning1BattingRuns > (inning2BattingRuns+inning3BattingRuns)){
+	        				//Team batting 1st win by an innings and run after follow on
+	        				strMatchStatus += " Win by Innings and" + (inning1BattingRuns - (inning2BattingRuns+inning3BattingRuns)) + " runs";
+	        			}else{
+	        				Integer team1Score = inning1BattingRuns+inning4BattingRuns;
+		        			Integer team2Score = inning2BattingRuns+inning3BattingRuns;
+		        			
+		        			if(team1Score > team2Score){
+		        				//Team batting first win by wicket's after follow on
+		        				strMatchStatus += " Win by " + (10 - inning4Wickets) + " wickets";
+		        			}else{
+		        				//Team batting second win by runs after follow on
+		        				strMatchStatus += " Win by " + (team2Score - team1Score) + " runs";
+		        			}
+	        			}
+	        		}else{
+	        			//Normal match 1st&3rd innings and 2nd&4th innings
+	        			Integer team1Score = inning1BattingRuns+inning3BattingRuns;
+	        			Integer team2Score = inning2BattingRuns+inning4BattingRuns;
+	        			
+	        			if(team1Score > team2Score){
+	        				//Team batting 1st win by runs
+		        			strMatchStatus += " Win by " + (team1Score - team2Score) + " runs";
+		        		}else{
+		        			//Team batting 2nd win by wicket's
+		        			strMatchStatus += " Win by " + (10 - inning4Wickets) + " wickets";
+		        		}
+	        		}
+	        		
+	        	}else{
+	        		//Single inning matches
+	        		if(inning1BattingRuns > inning2BattingRuns){
+	        			//Team batting 1st win by runs
+	        			strMatchStatus += " Win by " + (inning1BattingRuns - inning2BattingRuns) + " runs";
+	        		}else{
+	        			//Team batting second win by wicket's
+	        			strMatchStatus += " Win by " + (10 - inning2Wickets) + " wickets";
+	        		}
+	        	}
+		        
+		        
+	        }catch(Exception e){
+	        	e.printStackTrace();
+	        	apiCompleteFlag = "Incomplete";
+	            log.writeErrLog(MatchAPI.class, matchId, e.toString());
+	        }
+        }else if(null != matchInfoDTO.getResultWinner() && !"".equals(matchInfoDTO.getResultWinner().trim())){
+        	strMatchStatus = matchInfoDTO.getResultWinner();
+        }
+        
+        String matchInfoObject =
 				"<matchInfo id='"+matchId+"' type='"+matchInfoDTO.getType()+"'" +
-				" date='"+matchInfoDTO.getDate()+"' gameType='"+matchInfoDTO.getType()+"'" +
+				" date='"+strMatchDates.toString()+"' gameType='"+matchInfoDTO.getType()+"'" +
 				" dayNight='day' seriesName='"+ matchInfoDTO.getSeriesName() +"' " +
 				" seriesSeason='"+matchInfoDTO.getSeriesSeason()+"' matchName='"+matchInfoDTO.getMatchName()+"' overs='50' " +
 				" targetscore='"+matchInfoDTO.getMatchResult()+"' targetmethod='normal'>";
 		
 		String tossObject = "<toss winner='"+matchInfoDTO.getTossWinner()+"' elected='"+matchInfoDTO.getTossWinner()+" elected to "+matchInfoDTO.getElected()+"'/>";
 		String resultObject = "<result winner='"+matchInfoDTO.getResultWinner()+"' playerofthematch='-' " +
-				"matchResult='"+matchInfoDTO.getMatchResult()+"' matchstate='"+matchInfoDTO.getMatchstate()+"'/>";
+				//"matchResult='"+matchInfoDTO.getMatchResult()+"' matchstate='"+matchInfoDTO.getMatchstate()+"'/>";
+				"matchResult='"+strMatchStatus.trim()+"' matchstate='"+matchInfoDTO.getMatchstate()+"'/>";
 		
 		String locationObject = "<location city='"+matchInfoDTO.getCity()+"'> " +matchInfoDTO.getVenue()+ " </location>";
 		
