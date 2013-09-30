@@ -1,7 +1,11 @@
 package in.co.paramatrix.csms.common;
 
 import in.co.paramatrix.csms.connection.ConnectionManagerHandler;
+import in.co.paramatrix.csms.dto.MatchInfoDTO;
+import in.co.paramatrix.csms.dto.MatchSummary;
 import in.co.paramatrix.csms.generalamd.GenerateStoreProcedure;
+import in.co.paramatrix.csms.logwriter.LogWriter;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -25,22 +29,16 @@ public class PointsTableAPI extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String strTournamentId = "";
-		if(request.getParameter("tournament") != null){
-			strTournamentId = request.getParameter("tournament");
-		}
 		String strSeasonName = "";
-		String strTournamentName = "";
-		String strSeasonId = "";
-		String strSeriesTypeId ="";
-		/*
 		if(request.getParameter("season") != null){
 			strSeasonName = request.getParameter("season");
 		}
+		String strTournamentName = "";
 		if(request.getParameter("tournament") != null){
 			strTournamentName = request.getParameter("tournament");
 		}
-		*/
+		String strSeasonId = "";
+		String strSeriesTypeId ="";
 		String strStatus = "SUCCESS";
 		Connection conn = null;
 		Statement stmt = null;
@@ -55,7 +53,7 @@ public class PointsTableAPI extends HttpServlet {
 			conn = ConnectionManagerHandler.getConnection("ScoreDB");
 			stmt = conn.createStatement();
 	
-			/*if(!"".equals(strSeasonName)){
+			if(!"".equals(strSeasonName)){
 				// Get the season ID for requested season from seasons_mst
 				String strSQL = "SELECT id FROM seasons_mst WHERE status='A' AND name='"+strSeasonName+"'";
 				ResultSet rs = stmt.executeQuery(strSQL);
@@ -74,35 +72,9 @@ public class PointsTableAPI extends HttpServlet {
 				}
 				rs.close();
 			}
-			*/
-
-			if(null != strTournamentId && !"".equals(strTournamentId) && !"null".equals(strTournamentId)){
-				try {
-					StringBuilder sbSQL = new StringBuilder("SELECT sm.id,stm.name as tournament, stm.id as series_type_id, sn.id as season_id, sn.name as season"); 
-					sbSQL.append(" FROM series_mst as sm ");
-					sbSQL.append(" INNER JOIN seriestypes_mst as stm ON sm.type = stm.id");
-					sbSQL.append(" INNER JOIN seasons_mst as sn ON sm.season = sn.id");
-					sbSQL.append(" WHERE sm.status='A'");
-					sbSQL.append(" AND stm.status = 'A'");
-					sbSQL.append(" AND sn.status = 'A'");
-					sbSQL.append(" AND sm.id = '"+strTournamentId+"'");
-					ResultSet rs = stmt.executeQuery(sbSQL.toString());
-					if (rs != null && rs.next()) {
-						strSeriesTypeId = rs.getString("series_type_id");
-						strTournamentName = rs.getString("tournament");
-						strSeasonId = rs.getString("season_id");
-						strSeasonName = rs.getString("season");
-					}
-					rs.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-					strXmlStatus = "Incomplete";
-					strStatus = "FAILURE";
-				}
-			}
-
-			if(!"".equals(strSeasonName) && !"".equals(strTournamentName) && !"".equals(strSeasonId) &&  !"".equals(strSeriesTypeId)){
 			
+			if(!"".equals(strSeasonName) && !"".equals(strTournamentName) && !"".equals(strSeasonId) &&  !"".equals(strSeriesTypeId)){
+				
 				GenerateStoreProcedure lobjGenerateProc = new GenerateStoreProcedure();
 				Vector vparam = new Vector();
 				vparam.add(strSeriesTypeId);
@@ -242,7 +214,6 @@ public class PointsTableAPI extends HttpServlet {
 					sbFinalXML.append(" <NR value='" + strNR + "' />");
 					sbFinalXML.append(" <NRR value='" + strNRR + "' />");
 					sbFinalXML.append(" <Quotient value='" + strQuotient + "' />");
-					sbFinalXML.append(" <Group id='' />");
 					sbFinalXML.append(" </Table>");
 				}
 			}
