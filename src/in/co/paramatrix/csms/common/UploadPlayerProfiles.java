@@ -86,7 +86,7 @@ public class UploadPlayerProfiles extends HttpServlet {
 			Sheet sheet = null;
 			int rows = 0;
 			Map<String, String> dataMap = null;
-			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			boolean validFile = true;
 			List<Map<String, String>> dataList = new ArrayList<Map<String, String>>();
 			String mapKey = null;
@@ -164,7 +164,9 @@ public class UploadPlayerProfiles extends HttpServlet {
 				}
 
 				if (validFile) {
+					int invalidRowCount = 0;
 					for (int rowNo = 1; rowNo < rows; rowNo++) {
+						boolean isValidRow = false;
 						row = sheet.getRow(rowNo);
 						if (row != null) {
 							dataMap = new HashMap<String, String>();
@@ -174,26 +176,51 @@ public class UploadPlayerProfiles extends HttpServlet {
 								if (cell != null) {
 									if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
 										if (mapKey.equalsIgnoreCase("Date of Birth")) {
-											dataMap.put(mapKey, sdf.format(cell.getDateCellValue()));
+											if(cell.getDateCellValue() != null && !"".equals(cell.getDateCellValue())){
+												try {
+													dataMap.put(mapKey, sdf.format(cell.getDateCellValue()));
+													isValidRow = true;
+												} catch (Exception e) {
+													e.printStackTrace();
+												}
+											}
+											
 										} else {
 											dataMap.put(mapKey, "" + cell.getNumericCellValue());
 										}
 									} else if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
 										String strValue = cell.getStringCellValue();
+										
 										if (strValue.trim().equals("") || strValue.equalsIgnoreCase("NULL")) {
 											dataMap.put(mapKey, null);
 										} else {
 											dataMap.put(mapKey, strValue.trim());
+											isValidRow = true;
 										}
 
 									} else if (cell.getCellType() == Cell.CELL_TYPE_BOOLEAN) {
 										dataMap.put(mapKey, "" + cell.getBooleanCellValue());
+										isValidRow = true;
 									} else {
 										dataMap.put(mapKey, null);
 									}
 								}
 							}
-							dataList.add(dataMap);
+							System.out.println("--- Valid Row -----" + isValidRow);
+							//Check for Empty row
+							if(isValidRow){
+								dataList.add(dataMap);
+								
+								//reset invalidRowCount
+								invalidRowCount = 0;
+							}else{
+								invalidRowCount++;
+							}
+							System.out.println("-----------invalidRowCount-------"+invalidRowCount);
+							//If no of invalid (blank) rows are more than 10 stop fetching new records 
+							if(invalidRowCount > 10){
+								break;
+							}
 						}
 					}
 
@@ -285,6 +312,13 @@ public class UploadPlayerProfiles extends HttpServlet {
 						}
 						if (map.get("Date of Birth") != null) {
 							strDOB = map.get("Date of Birth");
+							
+						}else{
+							//Put dummy DOB entry
+							//strDOB = "01/01/1980";
+							
+							errorList.add("Entry for Date of Birth not found ");
+							validData = false;
 						}
 						
 						String strBatStyle = map.get("Style Of Batting");
@@ -326,9 +360,13 @@ public class UploadPlayerProfiles extends HttpServlet {
 							}else {
 								displayName = strFirstName;
 							}
-							
+							System.out.println(strFirstName  +"-----displayName-------"+displayName);
 							displayName.replaceAll("\\W", " ").replaceAll("  ", " ");
 						}
+						
+						///Check DOB format correct or not
+						
+						
 						
 						//Update 'Name in the score sheet' for Summary Report
 						map.put("Name in the score sheet", displayName);
@@ -451,7 +489,13 @@ public class UploadPlayerProfiles extends HttpServlet {
 								sbQuery.append("'A')");
 
 								System.out.println(sbQuery);
-								stmt.execute(sbQuery.toString());
+								try {
+									stmt.execute(sbQuery.toString());
+								} catch (Exception e) {
+									errorList.add(" Error while inserting record : "+e.getMessage());
+									validData = false;
+									e.printStackTrace();
+								}
 								System.out.println("----- New record inserted successfully -----");
 								
 								Map<String,String> newRecordMap = new HashMap<String, String>();
